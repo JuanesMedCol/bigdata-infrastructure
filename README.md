@@ -1,4 +1,3 @@
-
 # Proyecto Integrador de Infraestructura y Arquitectura para Big Data
 
 Este proyecto está diseñado para realizar la **ingesta** de datos desde una API pública, almacenarlos en una base de datos SQLite y permitir su posterior **limpieza y análisis** mediante scripts automatizados en Python.
@@ -84,6 +83,17 @@ Opcion 2: pip install .
 ---
 
 ## 🚀 **Ejecución del Proyecto**
+
+### 👉 **0. Ejecución Automatica**
+
+Este script ejecuta en orden toda la rutina del programa:
+
+```bash
+python run.py
+```
+
+---
+
 
 ### 👉 **1. Ingestión de Datos**
 
