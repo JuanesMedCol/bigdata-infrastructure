@@ -28,6 +28,7 @@ Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.
 ```
 [bigdata-infrastructure]
 ├── README.md
+├── setup.py
 ├── .github
 │   └── workflows
 │       └── bigdata.yml
