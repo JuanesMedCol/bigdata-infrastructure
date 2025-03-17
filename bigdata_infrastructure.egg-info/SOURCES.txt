@@ -1,0 +1,7 @@
+README.md
+setup.py
+bigdata_infrastructure.egg-info/PKG-INFO
+bigdata_infrastructure.egg-info/SOURCES.txt
+bigdata_infrastructure.egg-info/dependency_links.txt
+bigdata_infrastructure.egg-info/requires.txt
+bigdata_infrastructure.egg-info/top_level.txt

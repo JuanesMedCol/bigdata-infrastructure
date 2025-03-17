@@ -1,0 +1,82 @@
+Metadata-Version: 2.2
+Name: bigdata-infrastructure
+Version: 0.1
+Summary: Proyecto de big data para procesamiento de datos
+Home-page: https://github.com/JuanesMedCol/bigdata-infrastructure
+Author: Juan Esteban Atehortua Sanchez
+Author-email: juan.atehortua@est.iudigital.edu.co
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+Requires-Dist: pandas
+Requires-Dist: numpy
+Requires-Dist: openpyxl
+Requires-Dist: pyspark
+Requires-Dist: requests
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: license
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
+
+# Proyecto Integrador de Infraestructura y arquitectura para Big Data 
+
+Este proyecto estÃ¡ diseÃ±ado para realizar la ingesta de datos desde una API pÃºblica, almacenarlos en una base de datos SQLite y permitir su manipulaciÃ³n posterior. 
+
+## DescripciÃ³n
+
+Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts), que es un servicio de pruebas para desarrolladores. Los datos extraÃ­dos son almacenados en una base de datos SQLite local, permitiendo su anÃ¡lisis y manejo.
+
+### Funcionalidades:
+- Realiza una solicitud GET a la API para obtener datos.
+- Almacena los datos en una base de datos SQLite.
+- Evita duplicados en la base de datos mediante restricciones Ãºnicas.
+- El archivo de base de datos se guarda en una carpeta especÃ­fica dentro del proyecto.
+
+## Requisitos
+
+Para ejecutar este proyecto, necesitas tener instalados los siguientes paquetes:
+
+- Python 3.x
+- SQLite3 (generalmente ya estÃ¡ incluido con Python)
+- Bibliotecas adicionales de Python que puedes instalar con pip:
+
+## Estructura del Proyecto en GitHub
+```
+[bigdata-infrastructure]
+â”œâ”€â”€ README.md
+â”œâ”€â”€ .github
+â”‚   â””â”€â”€ workflows
+â”‚       â””â”€â”€ bigdata.yml
+â””â”€â”€ src
+    â”œâ”€â”€ static
+    â”‚   â”œâ”€â”€ auditoria
+    â”‚   â”‚   â””â”€â”€ ingestion.txt
+    â”‚   â”œâ”€â”€ db
+    â”‚   â”‚   â””â”€â”€ ingestion.db
+    â”‚   â”œâ”€â”€ csv
+    â”‚   â”‚   â””â”€â”€ ingestion.csv
+    â”‚   â””â”€â”€ xlsx
+    â”‚       â””â”€â”€ ingestion.xlsx
+    â””â”€â”€ ingestion.py
+```
+##  InstalaciÃ³n de las dependencias:
+Una vez que tengas el archivo requirements.txt, puedes instalar todas las dependencias con:
+```
+pip install -r requirements.txt
+```
+
+## Uso
+Ejecuta el script principal:
+```
+python ingestion.py
+```
+

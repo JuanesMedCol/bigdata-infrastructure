@@ -1,4 +1,4 @@
-name: Ingestión de Datos
+name: Ingestión y Limpieza de Datos
 
 on:
   push:
@@ -10,30 +10,63 @@ on:
 jobs:
   ingest_data:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests pandas openpyxl
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pandas openpyxl
 
-    - name: Run ingestion script
-      run: python src/ingestion.py
+      - name: Run ingestion script
+        run: python src/ingestion.py
 
-    - name: Upload results
-      uses: actions/upload-artifact@v4
-      with:
-        name: ingestion-results
-        path: |
-          src/static/auditoria/ingestion.txt
-          src/static/db/ingestion.db
-          src/static/csv/ingestion.csv
-          src/static/xlsx/ingestion.xlsx
+      - name: Upload ingestion results
+        uses: actions/upload-artifact@v4
+        with:
+          name: ingestion-results
+          path: |
+            src/static/auditoria/ingestion_report.txt
+            src/static/db/ingestion.db
+            src/static/csv/ingestion.csv
+            src/static/xlsx/ingestion.xlsx
+
+  clean_data:
+    needs: ingest_data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl
+
+      - name: Download ingestion results
+        uses: actions/download-artifact@v4
+        with:
+          name: ingestion-results
+          path: src/static/
+
+      - name: Run cleaning script
+        run: python src/cleaning.py
+
+      - name: Upload cleaning results
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleaning-results
+          path: |
+            src/static/auditoria/cleaning_report.txt
+            src/static/xlsx/cleaning.xlsx

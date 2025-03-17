@@ -1,0 +1,5 @@
+Comparación de los datos extraídos y almacenados en la base de datos:
+
+Resumen:
+✔️ Registros coincidentes: 100
+❌ Registros no encontrados: 0
