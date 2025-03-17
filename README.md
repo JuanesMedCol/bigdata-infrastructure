@@ -174,12 +174,6 @@ El proceso de ingestión y limpieza está automatizado mediante GitHub Actions. 
 
 ---
 
-## 📃 **Licencia**
-
-Este proyecto está bajo la licencia  **MIT** . Consulta el archivo `LICENSE` para más información.
-
----
-
 ## 🌟 **Autor**
 
 **[Juan Esteban Atehortua Sanchez]**
