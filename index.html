@@ -53,18 +53,36 @@
   
   <script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js"></script>
   <script>
+    mermaid.initialize({ startOnLoad: false });
+
     document.addEventListener("DOMContentLoaded", function () {
-      const blocks = document.querySelectorAll("code.language-mermaid");
-      blocks.forEach((block, index) => {
-        const pre = block.parentElement;
+      const mermaidBlocks = document.querySelectorAll("pre code.language-mermaid");
+      mermaidBlocks.forEach((block, index) => {
+        const parentPre = block.parentElement;
         const wrapper = document.createElement("div");
         wrapper.classList.add("mermaid");
         wrapper.innerHTML = block.textContent;
-        pre.replaceWith(wrapper);
+        parentPre.replaceWith(wrapper);
       });
-      mermaid.initialize({ startOnLoad: true });
+
+      mermaid.init(undefined, document.querySelectorAll(".mermaid"));
     });
   </script>
+
+  
+  <style>
+    body::before {
+      content: "✅ overrides/main.html ACTIVO";
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: limegreen;
+      color: black;
+      padding: 5px 10px;
+      font-weight: bold;
+      z-index: 9999;
+    }
+  </style>
 
   </head>
   
