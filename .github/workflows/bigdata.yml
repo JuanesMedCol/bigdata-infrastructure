@@ -1,4 +1,4 @@
-name: Ingestión y Limpieza de Datos
+name: Ingestión, Limpieza y Documentación
 
 on:
   push:
@@ -12,16 +12,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install requests pandas openpyxl
 
       - name: Run ingestion script
@@ -42,16 +42,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install pandas openpyxl
 
       - name: Download ingestion results
@@ -71,22 +71,21 @@ jobs:
             src/static/auditoria/cleaning_report.txt
             src/static/xlsx/cleaning.xlsx
 
-            #
   build_docs:
-    needs: [clean_data]  # Solo se ejecuta si los anteriores tuvieron éxito
+    needs: clean_data
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.11'
 
       - name: Install MkDocs and theme
         run: |
-          python -m pip install --upgrade pip
+          pip install --upgrade pip
           pip install mkdocs mkdocs-material
 
       - name: Build MkDocs site
@@ -95,5 +94,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./site
