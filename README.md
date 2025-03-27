@@ -6,6 +6,8 @@ Este proyecto está diseñado para realizar la **ingesta** de datos desde una AP
 
 Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts), que es un servicio de pruebas para desarrolladores. Los datos extraídos se almacenan en una base de datos SQLite local, permitiendo su análisis, limpieza y manipulación posterior.
 
+### [Revisa la documentacion del proyecto](https://juanesmedcol.github.io/bigdata-infrastructure/)
+
 ### 🔥 **Funcionalidades:**
 
 ✅ Realiza una solicitud `GET` a la API para obtener datos.
@@ -26,25 +28,53 @@ Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.
 
 ```
 [bigdata-infrastructure]
-├── README.md
-├── setup.py
-├── .github
-│   └── workflows
-│       └── bigdata.yml
-└── src
-    ├── static
-    │   ├── auditoria
-    │   │   ├── ingestion_report.txt
-    │   │   └── cleaning_report.txt
-    │   ├── db
-    │   │   └── ingestion.db
-    │   ├── csv
-    │   │   └── ingestion.csv
-    │   ├── xlsx
-    │   │   ├── ingestion.xlsx
-    │   │   └── cleaning.xlsx
-    ├── ingestion.py
-    └── cleaning.py
+│   .gitattributes
+│   .gitignore
+│   mkdocs.yml
+│   README.md
+│   requirements.txt
+│   run.py
+│   setup.py
+│
+├───.github
+│   └───workflows
+│           bigdata.yml
+│
+├───.qodo
+│       history.sqlite
+│
+├───bigdata_infrastructure.egg-info
+│       dependency_links.txt
+│       PKG-INFO
+│       requires.txt
+│       SOURCES.txt
+│       top_level.txt
+│
+├───build
+│   └───bdist.win-amd64
+├───docs
+│       index.md
+│       ingesta.md
+│       limpieza.md
+│
+└───src
+    │   cleaning.py
+    │   ingestion.py
+    │
+    └───static
+        ├───auditoria
+        │       cleaning_report.txt
+        │       ingestion_report.txt
+        │
+        ├───csv
+        │       ingestion.csv
+        │
+        ├───db
+        │       ingestion.db
+        │
+        └───xlsx
+                cleaning.xlsx
+                ingestion.xlsx
 ```
 
 ---
@@ -93,7 +123,6 @@ python run.py
 ```
 
 ---
-
 
 ### 👉 **1. Ingestión de Datos**
 

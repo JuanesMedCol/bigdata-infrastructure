@@ -8,3 +8,16 @@ nav:
   - Inicio: index.md
   - Ingesta de Datos: ingesta.md
   - Limpieza de Datos: limpieza.md
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - attr_list
+  - admonition
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - mermaid2
+

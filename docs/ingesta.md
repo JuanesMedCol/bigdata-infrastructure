@@ -1,8 +1,125 @@
-# Ingesta de Datos
 
-Descripción del proceso de ingesta.
+## 📄 Ingesta de Datos desde API REST
 
-## Reportes
+Este script realiza la ingesta de datos desde un endpoint público (`https://jsonplaceholder.typicode.com/posts`) y los procesa en diferentes formatos. A continuación, se documenta cada etapa del flujo.
 
-- [Ingesta CSV](../src/static/csv/ingestion.csv)
-- [Reporte](../src/static/auditoria/ingestion_report.txt)
+---
+
+### 🚀 Inicio del Proceso
+
+* Se establece la configuración de `logging` para mostrar mensajes en consola.
+* Se define la URL de la API.
+
+```
+url = 'https://jsonplaceholder.typicode.com/posts'
+```
+
+---
+
+### 🌐 Consulta a la API
+
+* Se hace una solicitud `GET` a la API.
+* Si la respuesta es exitosa (`status_code == 200`), se procesa la información.
+* En caso de error, el script finaliza.
+
+---
+
+### 📁 Rutas y Directorios
+
+El script crea las siguientes rutas para guardar los datos:
+
+* `src/static/db/ingestion.db`: Base de datos SQLite
+* `src/static/csv/ingestion.csv`: Archivo CSV
+* `src/static/xlsx/ingestion.xlsx`: Archivo Excel
+* `src/static/auditoria/ingestion_report.txt`: Reporte de auditoría
+
+Se crean las carpetas automáticamente si no existen.
+
+---
+
+### 🗃️ Almacenamiento en Base de Datos
+
+Se conecta a una base de datos SQLite y crea una tabla llamada `posts` con las siguientes columnas:
+
+| Campo | Tipo    |
+| ----- | ------- |
+| id    | INTEGER |
+| title | TEXT    |
+| body  | TEXT    |
+
+Luego se insertan los datos obtenidos desde el API.
+
+---
+
+### 📤 Exportación a Formatos
+
+Se exportan los primeros 10 registros desde la base de datos a:
+
+* **CSV** : `src/static/csv/ingestion.csv`
+* **Excel** : `src/static/xlsx/ingestion.xlsx`
+
+---
+
+### 🕵️ Auditoría de Datos
+
+El script verifica que los datos guardados coincidan con los datos obtenidos del API. Para cada registro:
+
+* ✔️ Si el `title` y `body` coinciden con la base de datos → se cuenta como "coincidente".
+* ❌ Si no hay coincidencia → se escribe en el archivo `ingestion_report.txt`.
+
+#### 📊 Resumen generado:
+
+```
+✔️ Registros coincidentes: X
+❌ Registros no encontrados: Y
+```
+
+---
+
+### ✅ Fin del Proceso
+
+El proceso termina con un mensaje de éxito:
+
+```
+Proceso finalizado correctamente ✅
+```
+
+---
+
+### 📎 Archivos descargables
+
+- [CSV de Ingesta](## 🧠 Diagrama del Flujo de Limpieza  ```mermaid (Pega aquí el código del diagrama)/ingestion.csv)
+- [Excel de Ingesta](resultados/ingestion.xlsx)
+- [Reporte de Auditoría](resultados/ingestion_report.txt)
+
+---
+
+## 🧠 Diagrama del Proceso de Ingesta
+
+```mermaid
+flowchart TD
+    A[Inicio del proceso] --> B[Llamada a la API externa (GET /posts)]
+    B --> C{¿Respuesta 200 OK?}
+    C -- Sí --> D[Extraer datos en formato JSON]
+    C -- No --> Z[Terminar con error]
+
+    D --> E[Crear carpetas de salida si no existen]
+    E --> F[Conectar a base de datos SQLite (ingestion.db)]
+    F --> G[Crear tabla posts si no existe]
+    G --> H[Insertar o reemplazar registros en la tabla]
+
+    H --> I[Cerrar conexión y confirmar datos insertados]
+    I --> J[Reabrir conexión y leer 10 registros con Pandas]
+    J --> K[Exportar a CSV]
+    J --> L[Exportar a Excel]
+
+    K --> M[Iniciar generación del informe de auditoría]
+    L --> M
+
+    M --> N[Comparar datos extraídos vs base de datos]
+    N --> O[Contar coincidencias y errores]
+    O --> P[Escribir archivo ingestion_report.txt]
+
+    P --> Q[Finalizar proceso con log de éxito ✅]
+
+```
