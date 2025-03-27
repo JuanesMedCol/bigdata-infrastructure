@@ -1,8 +1,0 @@
-site_name: Documentación del Proyecto
-theme:
-  name: material
-
-nav:
-  - Inicio: index.md
-  - Ingesta: ingesta.md
-  - Limpieza: limpieza.md
