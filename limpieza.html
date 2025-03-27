@@ -606,8 +606,8 @@ Número de registros duplicados: 2
 <hr />
 <h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza</h3>
 <div class="highlight"><pre><span></span><code>flowchart TD
-    A[Inicio del Proceso] --&gt; B[Cargar base de datos (ingestion.db)]
-    B --&gt; C[Leer tabla &quot;posts&quot; con Pandas]
+    A[Inicio del Proceso] --&gt; B[Cargar base de datos: ingestion.db]
+    B --&gt; C[Leer tabla &#39;posts&#39; con Pandas]
     C --&gt; D[Análisis exploratorio]
     D --&gt; D1[Contar registros]
     D --&gt; D2[Buscar nulos]
@@ -616,15 +616,15 @@ Número de registros duplicados: 2
     D3 --&gt; E[Proceso de limpieza]
     E --&gt; E1[Eliminar duplicados]
     E --&gt; E2[Rellenar nulos]
-    E2 --&gt; E2a[Numéricos → media]
-    E2 --&gt; E2b[Texto → ffill()]
+    E2 --&gt; E2a[Numéricos -&gt; media]
+    E2 --&gt; E2b[Texto -&gt; método ffill]
     E --&gt; E3[Conversión de tipos]
-    E3 --&gt; E3a[fecha → datetime]
-    E3 --&gt; E3b[monto → numérico + normalización]
+    E3 --&gt; E3a[fecha -&gt; datetime]
+    E3 --&gt; E3b[monto -&gt; numérico y normalizado]
 
     E3b --&gt; F[Verificar limpieza]
-    F --&gt; G[Exportar a Excel (cleaning.xlsx)]
-    F --&gt; H[Generar reporte de limpieza (cleaning_report.txt)]
+    F --&gt; G[Exportar Excel: cleaning.xlsx]
+    F --&gt; H[Generar reporte: cleaning_report.txt]
 
     G --&gt; I[Fin del proceso]
     H --&gt; I

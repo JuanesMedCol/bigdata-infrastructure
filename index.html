@@ -404,13 +404,39 @@ Opcion<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>p
 <span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="nb">TEXT</span>
 <span class="p">)</span>
 </code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Tipo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>INTEGER</td>
+<td>Identificador único (PK)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>TEXT</td>
+<td>Título del post</td>
+</tr>
+<tr>
+<td><code>body</code></td>
+<td>TEXT</td>
+<td>Contenido del post</td>
+</tr>
+</tbody>
+</table>
 <hr/>
 <h2 id="diagrama-mermaid-modelo-de-datos">🧠 Diagrama Mermaid – Modelo de Datos</h2>
 <div class="highlight"><pre><span></span><code>erDiagram
     posts {
-        INTEGER id PK "Identificador único del post"
-        TEXT title "Título del post"
-        TEXT body "Contenido del post"
+        INTEGER id PK
+        TEXT title
+        TEXT body
     }
 </code></pre></div>
 <hr/>
