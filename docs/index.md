@@ -134,8 +134,6 @@ CREATE TABLE IF NOT EXISTS posts (
 )
 ```
 
-
-
 | Campo     | Tipo    | Descripción              |
 | --------- | ------- | ------------------------- |
 | `id`    | INTEGER | Identificador único (PK) |
@@ -153,6 +151,7 @@ erDiagram
         TEXT title
         TEXT body
     }
+
 ```
 
 ---

@@ -121,8 +121,8 @@ El script completa el proceso con logs informativos:
 ```mermaid
 flowchart TD
     A[Inicio del Proceso] --> B[Cargar base de datos: ingestion.db]
-    B --> C[Leer tabla 'posts' con Pandas]
-    C --> D[Análisis exploratorio]
+    B --> C[Leer tabla posts con Pandas]
+    C --> D[Analisis exploratorio]
     D --> D1[Contar registros]
     D --> D2[Buscar nulos]
     D --> D3[Buscar duplicados]
@@ -130,11 +130,11 @@ flowchart TD
     D3 --> E[Proceso de limpieza]
     E --> E1[Eliminar duplicados]
     E --> E2[Rellenar nulos]
-    E2 --> E2a[Numéricos -> media]
-    E2 --> E2b[Texto -> método ffill]
-    E --> E3[Conversión de tipos]
-    E3 --> E3a[fecha -> datetime]
-    E3 --> E3b[monto -> numérico y normalizado]
+    E2 --> E2a[Numericos - media]
+    E2 --> E2b[Texto - metodo ffill]
+    E --> E3[Conversion de tipos]
+    E3 --> E3a[fecha a datetime]
+    E3 --> E3b[monto normalizado]
 
     E3b --> F[Verificar limpieza]
     F --> G[Exportar Excel: cleaning.xlsx]
@@ -142,5 +142,4 @@ flowchart TD
 
     G --> I[Fin del proceso]
     H --> I
-
 ```

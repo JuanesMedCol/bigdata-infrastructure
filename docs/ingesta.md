@@ -97,27 +97,27 @@ Proceso finalizado correctamente ✅
 
 ```mermaid
 flowchart TD
-    A[Inicio del proceso] --> B[Llamada a la API externa - GET /posts]
+    A[Inicio del proceso] --> B[Llamada a API externa - GET /posts]
     B --> C{Respuesta 200 OK}
     C -- Si --> D[Extraer datos en formato JSON]
     C -- No --> Z[Terminar con error]
 
-    D --> E[Crear carpetas de salida si no existen]
-    E --> F[Conectar a base de datos SQLite]
+    D --> E[Crear carpetas de salida]
+    E --> F[Conectar a BD SQLite]
     F --> G[Crear tabla posts si no existe]
-    G --> H[Insertar o reemplazar registros en la tabla]
+    G --> H[Insertar o reemplazar registros]
 
-    H --> I[Cerrar conexion y confirmar inserciones]
+    H --> I[Cerrar conexion y confirmar]
     I --> J[Leer 10 registros con Pandas]
     J --> K[Exportar a CSV]
     J --> L[Exportar a Excel]
 
-    K --> M[Iniciar generacion del informe de auditoria]
+    K --> M[Generar informe de auditoria]
     L --> M
 
-    M --> N[Comparar datos extraidos con base de datos]
+    M --> N[Comparar datos con BD]
     N --> O[Contar coincidencias y errores]
-    O --> P[Escribir archivo ingestion_report.txt]
+    O --> P[Escribir ingestion_report.txt]
 
-    P --> Q[Finalizar proceso con log de exito]
+    P --> Q[Fin del proceso]
 ```
