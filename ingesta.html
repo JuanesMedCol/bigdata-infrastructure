@@ -331,10 +331,10 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1>Ingesta de Datos</h1>
-<h2 id="ingesta-de-datos-desde-api-rest">📄 Ingesta de Datos desde API REST<a class="headerlink" href="#ingesta-de-datos-desde-api-rest" title="Permanent link">¶</a></h2>
+<h2 id="ingesta-de-datos-desde-api-rest">📄 Ingesta de Datos desde API REST</h2>
 <p>Este script realiza la ingesta de datos desde un endpoint público (<code>https://jsonplaceholder.typicode.com/posts</code>) y los procesa en diferentes formatos. A continuación, se documenta cada etapa del flujo.</p>
 <hr/>
-<h3 id="inicio-del-proceso">🚀 Inicio del Proceso<a class="headerlink" href="#inicio-del-proceso" title="Permanent link">¶</a></h3>
+<h3 id="inicio-del-proceso">🚀 Inicio del Proceso</h3>
 <ul>
 <li>Se establece la configuración de <code>logging</code> para mostrar mensajes en consola.</li>
 <li>Se define la URL de la API.</li>
@@ -342,14 +342,14 @@
 <div class="highlight"><pre><span></span><code>url = 'https://jsonplaceholder.typicode.com/posts'
 </code></pre></div>
 <hr/>
-<h3 id="consulta-a-la-api">🌐 Consulta a la API<a class="headerlink" href="#consulta-a-la-api" title="Permanent link">¶</a></h3>
+<h3 id="consulta-a-la-api">🌐 Consulta a la API</h3>
 <ul>
 <li>Se hace una solicitud <code>GET</code> a la API.</li>
 <li>Si la respuesta es exitosa (<code>status_code == 200</code>), se procesa la información.</li>
 <li>En caso de error, el script finaliza.</li>
 </ul>
 <hr/>
-<h3 id="rutas-y-directorios">📁 Rutas y Directorios<a class="headerlink" href="#rutas-y-directorios" title="Permanent link">¶</a></h3>
+<h3 id="rutas-y-directorios">📁 Rutas y Directorios</h3>
 <p>El script crea las siguientes rutas para guardar los datos:</p>
 <ul>
 <li><code>src/static/db/ingestion.db</code>: Base de datos SQLite</li>
@@ -359,7 +359,7 @@
 </ul>
 <p>Se crean las carpetas automáticamente si no existen.</p>
 <hr/>
-<h3 id="almacenamiento-en-base-de-datos">🗃️ Almacenamiento en Base de Datos<a class="headerlink" href="#almacenamiento-en-base-de-datos" title="Permanent link">¶</a></h3>
+<h3 id="almacenamiento-en-base-de-datos">🗃️ Almacenamiento en Base de Datos</h3>
 <p>Se conecta a una base de datos SQLite y crea una tabla llamada <code>posts</code> con las siguientes columnas:</p>
 <table>
 <thead>
@@ -385,37 +385,37 @@
 </table>
 <p>Luego se insertan los datos obtenidos desde el API.</p>
 <hr/>
-<h3 id="exportacion-a-formatos">📤 Exportación a Formatos<a class="headerlink" href="#exportacion-a-formatos" title="Permanent link">¶</a></h3>
+<h3 id="exportacion-a-formatos">📤 Exportación a Formatos</h3>
 <p>Se exportan los primeros 10 registros desde la base de datos a:</p>
 <ul>
 <li><strong>CSV</strong> : <code>src/static/csv/ingestion.csv</code></li>
 <li><strong>Excel</strong> : <code>src/static/xlsx/ingestion.xlsx</code></li>
 </ul>
 <hr/>
-<h3 id="auditoria-de-datos">🕵️ Auditoría de Datos<a class="headerlink" href="#auditoria-de-datos" title="Permanent link">¶</a></h3>
+<h3 id="auditoria-de-datos">🕵️ Auditoría de Datos</h3>
 <p>El script verifica que los datos guardados coincidan con los datos obtenidos del API. Para cada registro:</p>
 <ul>
 <li>✔️ Si el <code>title</code> y <code>body</code> coinciden con la base de datos → se cuenta como "coincidente".</li>
 <li>❌ Si no hay coincidencia → se escribe en el archivo <code>ingestion_report.txt</code>.</li>
 </ul>
-<h4 id="resumen-generado">📊 Resumen generado:<a class="headerlink" href="#resumen-generado" title="Permanent link">¶</a></h4>
+<h4 id="resumen-generado">📊 Resumen generado:</h4>
 <div class="highlight"><pre><span></span><code>✔️ Registros coincidentes: X
 ❌ Registros no encontrados: Y
 </code></pre></div>
 <hr/>
-<h3 id="fin-del-proceso">✅ Fin del Proceso<a class="headerlink" href="#fin-del-proceso" title="Permanent link">¶</a></h3>
+<h3 id="fin-del-proceso">✅ Fin del Proceso</h3>
 <p>El proceso termina con un mensaje de éxito:</p>
 <div class="highlight"><pre><span></span><code>Proceso finalizado correctamente ✅
 </code></pre></div>
 <hr/>
-<h3 id="archivos-descargables">📎 Archivos descargables<a class="headerlink" href="#archivos-descargables" title="Permanent link">¶</a></h3>
+<h3 id="archivos-descargables">📎 Archivos descargables</h3>
 <ul>
 <li><a href="## 🧠 Diagrama del Flujo de Limpieza  ```mermaid (Pega aquí el código del diagrama)/ingestion.csv">CSV de Ingesta</a></li>
 <li><a href="resultados/ingestion.xlsx">Excel de Ingesta</a></li>
 <li><a href="resultados/ingestion_report.txt">Reporte de Auditoría</a></li>
 </ul>
 <hr/>
-<h2 id="diagrama-del-proceso-de-ingesta">🧠 Diagrama del Proceso de Ingesta<a class="headerlink" href="#diagrama-del-proceso-de-ingesta" title="Permanent link">¶</a></h2>
+<h2 id="diagrama-del-proceso-de-ingesta">🧠 Diagrama del Proceso de Ingesta</h2>
 <div class="highlight"><pre><span></span><code>flowchart TD
     A[Inicio del proceso] --&gt; B[Llamada a la API externa (GET /posts)]
     B --&gt; C{¿Respuesta 200 OK?}

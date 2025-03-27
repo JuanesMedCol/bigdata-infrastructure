@@ -518,17 +518,17 @@
 
   <h1>Limpieza de Datos</h1>
 
-<h2 id="limpieza-y-transformacion-de-datos">🧼 Limpieza y Transformación de Datos<a class="headerlink" href="#limpieza-y-transformacion-de-datos" title="Permanent link">&para;</a></h2>
+<h2 id="limpieza-y-transformacion-de-datos">🧼 Limpieza y Transformación de Datos</h2>
 <p>Este script realiza una limpieza automática de datos almacenados en una base de datos SQLite. A continuación, se detalla cada una de las etapas del proceso.</p>
 <hr />
-<h3 id="estructura-de-archivos">📁 Estructura de Archivos<a class="headerlink" href="#estructura-de-archivos" title="Permanent link">&para;</a></h3>
+<h3 id="estructura-de-archivos">📁 Estructura de Archivos</h3>
 <ul>
 <li><strong>Base de datos de entrada</strong> : <code>src/static/db/ingestion.db</code></li>
 <li><strong>Archivo Excel de salida</strong> : <code>src/static/xlsx/cleaning.xlsx</code></li>
 <li><strong>Reporte de auditoría</strong> : <code>src/static/auditoria/cleaning_report.txt</code></li>
 </ul>
 <hr />
-<h3 id="1-carga-de-datos">🔹 1. Carga de Datos<a class="headerlink" href="#1-carga-de-datos" title="Permanent link">&para;</a></h3>
+<h3 id="1-carga-de-datos">🔹 1. Carga de Datos</h3>
 <p>Se conecta a la base de datos SQLite y se lee la tabla <code>posts</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">():</span>
     <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
@@ -536,7 +536,7 @@
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="2-analisis-exploratorio">🔍 2. Análisis Exploratorio<a class="headerlink" href="#2-analisis-exploratorio" title="Permanent link">&para;</a></h3>
+<h3 id="2-analisis-exploratorio">🔍 2. Análisis Exploratorio</h3>
 <p>Se genera un pequeño resumen con:</p>
 <ul>
 <li>Número total de registros</li>
@@ -548,7 +548,7 @@
     <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </code></pre></div>
 <hr />
-<h3 id="3-proceso-de-limpieza">🧼 3. Proceso de Limpieza<a class="headerlink" href="#3-proceso-de-limpieza" title="Permanent link">&para;</a></h3>
+<h3 id="3-proceso-de-limpieza">🧼 3. Proceso de Limpieza</h3>
 <p>La limpieza incluye:</p>
 <ul>
 <li>✅ Eliminación de duplicados</li>
@@ -565,7 +565,7 @@
 <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>                 <span class="c1"># para texto</span>
 </code></pre></div>
 <hr />
-<h3 id="4-guardado-de-resultados">💾 4. Guardado de Resultados<a class="headerlink" href="#4-guardado-de-resultados" title="Permanent link">&para;</a></h3>
+<h3 id="4-guardado-de-resultados">💾 4. Guardado de Resultados</h3>
 <p>Se exportan los datos a:</p>
 <ul>
 <li>Archivo <strong>Excel</strong> (<code>.xlsx</code>)</li>
@@ -576,7 +576,7 @@
     <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="reporte-generado">📊 Reporte generado<a class="headerlink" href="#reporte-generado" title="Permanent link">&para;</a></h3>
+<h3 id="reporte-generado">📊 Reporte generado</h3>
 <p><strong>Ejemplo de contenido del <code>cleaning_report.txt</code>:</strong></p>
 <div class="highlight"><pre><span></span><code>📋 Informe de Limpieza de Datos
 
@@ -591,20 +591,20 @@ Número de registros duplicados: 2
 ✅ Número de registros después de limpieza: 98
 </code></pre></div>
 <hr />
-<h3 id="resultado-final">✅ Resultado Final<a class="headerlink" href="#resultado-final" title="Permanent link">&para;</a></h3>
+<h3 id="resultado-final">✅ Resultado Final</h3>
 <p>El script completa el proceso con logs informativos:</p>
 <div class="highlight"><pre><span></span><code>🚀 Inicio del proceso de limpieza de datos
 📥 Datos cargados correctamente...
 ✅ Proceso completado con éxito.
 </code></pre></div>
 <hr />
-<h3 id="archivos-generados">📎 Archivos Generados<a class="headerlink" href="#archivos-generados" title="Permanent link">&para;</a></h3>
+<h3 id="archivos-generados">📎 Archivos Generados</h3>
 <ul>
 <li><a href="resultados/cleaning.xlsx">Excel de Limpieza</a></li>
 <li><a href="resultados/cleaning_report.txt">Reporte de Auditoria</a></li>
 </ul>
 <hr />
-<h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza<a class="headerlink" href="#diagrama-del-flujo-de-limpieza" title="Permanent link">&para;</a></h3>
+<h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza</h3>
 <div class="highlight"><pre><span></span><code>flowchart TD
     A[Inicio del Proceso] --&gt; B[Cargar base de datos (ingestion.db)]
     B --&gt; C[Leer tabla &quot;posts&quot; con Pandas]

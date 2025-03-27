@@ -301,11 +301,11 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="proyecto-integrador-de-infraestructura-y-arquitectura-para-big-data">Proyecto Integrador de Infraestructura y Arquitectura para Big Data<a class="headerlink" href="#proyecto-integrador-de-infraestructura-y-arquitectura-para-big-data" title="Permanent link">¶</a></h1>
+<h1 id="proyecto-integrador-de-infraestructura-y-arquitectura-para-big-data">Proyecto Integrador de Infraestructura y Arquitectura para Big Data</h1>
 <p>Este proyecto está diseñado para realizar la <strong>ingesta</strong> de datos desde una API pública, almacenarlos en una base de datos SQLite y permitir su posterior <strong>limpieza y análisis</strong> mediante scripts automatizados en Python.</p>
-<h2 id="descripcion">🚀 <strong>Descripción</strong><a class="headerlink" href="#descripcion" title="Permanent link">¶</a></h2>
+<h2 id="descripcion">🚀 <strong>Descripción</strong></h2>
 <p>Este proyecto obtiene datos de la API <a href="https://jsonplaceholder.typicode.com/posts">JSONPlaceholder</a>, que es un servicio de pruebas para desarrolladores. Los datos extraídos se almacenan en una base de datos SQLite local, permitiendo su análisis, limpieza y manipulación posterior.</p>
-<h3 id="funcionalidades">🔥 <strong>Funcionalidades:</strong><a class="headerlink" href="#funcionalidades" title="Permanent link">¶</a></h3>
+<h3 id="funcionalidades">🔥 <strong>Funcionalidades:</strong></h3>
 <p>✅ Realiza una solicitud <code>GET</code> a la API para obtener datos.</p>
 <p>✅ Almacena los datos en una base de datos SQLite.</p>
 <p>✅ Evita duplicados en la base de datos mediante restricciones únicas.</p>
@@ -313,7 +313,7 @@
 <p>✅ Limpia los datos, manejando valores nulos y datos duplicados.</p>
 <p>✅ Genera un informe de auditoría detallado con el estado de los datos.</p>
 <hr/>
-<h2 id="estructura-del-proyecto">📂 <strong>Estructura del Proyecto</strong><a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">¶</a></h2>
+<h2 id="estructura-del-proyecto">📂 <strong>Estructura del Proyecto</strong></h2>
 <div class="highlight"><pre><span></span><code>[bigdata-infrastructure]
 │   .gitattributes
 │   .gitignore
@@ -364,7 +364,7 @@
                 ingestion.xlsx
 </code></pre></div>
 <hr/>
-<h2 id="requisitos">🛠️ <strong>Requisitos</strong><a class="headerlink" href="#requisitos" title="Permanent link">¶</a></h2>
+<h2 id="requisitos">🛠️ <strong>Requisitos</strong></h2>
 <p>Para ejecutar este proyecto, necesitas tener instalados los siguientes paquetes y herramientas:</p>
 <ul>
 <li><strong>Python 3.x</strong></li>
@@ -372,7 +372,7 @@
 <li>Bibliotecas adicionales de Python que puedes instalar fácilmente usando <code>pip</code></li>
 </ul>
 <hr/>
-<h2 id="instalacion-de-las-dependencias">📥 <strong>Instalación de las dependencias</strong><a class="headerlink" href="#instalacion-de-las-dependencias" title="Permanent link">¶</a></h2>
+<h2 id="instalacion-de-las-dependencias">📥 <strong>Instalación de las dependencias</strong></h2>
 <ol>
 <li>Clona el repositorio desde GitHub:</li>
 </ol>
@@ -390,13 +390,13 @@
 Opcion<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>.
 </code></pre></div>
 <hr/>
-<h2 id="ejecucion-del-proyecto">🚀 <strong>Ejecución del Proyecto</strong><a class="headerlink" href="#ejecucion-del-proyecto" title="Permanent link">¶</a></h2>
+<h2 id="ejecucion-del-proyecto">🚀 <strong>Ejecución del Proyecto</strong></h2>
 <p>Este script ejecuta en orden toda la rutina del programa:</p>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>run.py
 </code></pre></div>
 <hr/>
-<h2 id="modelo-de-base-de-datos">📊 Modelo de Base de Datos<a class="headerlink" href="#modelo-de-base-de-datos" title="Permanent link">¶</a></h2>
-<h3 id="estructura-de-la-tabla-posts">🧩 Estructura de la tabla <code>posts</code><a class="headerlink" href="#estructura-de-la-tabla-posts" title="Permanent link">¶</a></h3>
+<h2 id="modelo-de-base-de-datos">📊 Modelo de Base de Datos</h2>
+<h3 id="estructura-de-la-tabla-posts">🧩 Estructura de la tabla <code>posts</code></h3>
 <p>La base de datos <code>ingestion.db</code> contiene la tabla <code>posts</code> donde se almacenan los datos obtenidos del API.</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">posts</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INTEGER</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
@@ -405,7 +405,7 @@ Opcion<span class="w"> </span><span class="m">2</span>:<span class="w"> </span>p
 <span class="p">)</span>
 </code></pre></div>
 <hr/>
-<h2 id="diagrama-mermaid-modelo-de-datos">🧠 Diagrama Mermaid – Modelo de Datos<a class="headerlink" href="#diagrama-mermaid-modelo-de-datos" title="Permanent link">¶</a></h2>
+<h2 id="diagrama-mermaid-modelo-de-datos">🧠 Diagrama Mermaid – Modelo de Datos</h2>
 <div class="highlight"><pre><span></span><code>erDiagram
     posts {
         INTEGER id PK "Identificador único del post"
