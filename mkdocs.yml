@@ -1,10 +1,12 @@
 site_name: Documentación del Proyecto Big Data
-theme:
-  name: material
-  custom_dir: overrides
 site_url: https://juanesmedcol.github.io/bigdata-infrastructure/
 docs_dir: docs
 use_directory_urls: false
+
+theme:
+  name: material
+  custom_dir: overrides
+
 nav:
   - Inicio: index.md
   - Ingesta de Datos: ingesta.md
@@ -20,7 +22,3 @@ markdown_extensions:
 
 plugins:
   - search
-  - mermaid2
-
-markdown_extensions:
-  - pymdownx.superfences

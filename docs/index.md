@@ -151,7 +151,6 @@ erDiagram
         TEXT title
         TEXT body
     }
-
 ```
 
 ---
