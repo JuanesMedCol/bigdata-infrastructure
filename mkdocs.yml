@@ -1,6 +1,7 @@
 site_name: Documentación del Proyecto Big Data
 theme:
   name: material
+  custom_dir: overrides
 site_url: https://juanesmedcol.github.io/bigdata-infrastructure/
 docs_dir: docs
 use_directory_urls: false
