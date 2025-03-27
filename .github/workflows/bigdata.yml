@@ -86,7 +86,7 @@ jobs:
       - name: Install MkDocs and theme
         run: |
           pip install --upgrade pip
-          pip install mkdocs mkdocs-material
+          pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
 
       - name: Build MkDocs site
         run: mkdocs build
