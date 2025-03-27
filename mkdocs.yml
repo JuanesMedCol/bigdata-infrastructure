@@ -1,0 +1,8 @@
+site_name: Documentación del Proyecto Big Data
+theme:
+  name: material
+
+nav:
+  - Inicio: index.md
+  - Ingesta de Datos: ingesta.md
+  - Limpieza de Datos: limpieza.md
