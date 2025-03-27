@@ -9,12 +9,15 @@ setup(
         "numpy",
         "openpyxl",
         "pyspark",
-        "requests"
+        "requests",
+        "mkdocs",
+        "mkdocs-material",
+        "mkdocs-mermaid2-plugin"
     ],
     author="Juan Esteban Atehortua Sanchez",
     author_email="juan.atehortua@est.iudigital.edu.co",
     description="Proyecto de big data para procesamiento de datos",
-    long_description=open("README.md").read(),
+    long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/JuanesMedCol/bigdata-infrastructure",
     license="MIT",
