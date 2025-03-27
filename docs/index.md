@@ -134,6 +134,14 @@ CREATE TABLE IF NOT EXISTS posts (
 )
 ```
 
+
+
+| Campo     | Tipo    | Descripción              |
+| --------- | ------- | ------------------------- |
+| `id`    | INTEGER | Identificador único (PK) |
+| `title` | TEXT    | Título del post          |
+| `body`  | TEXT    | Contenido del post        |
+
 ---
 
 ## 🧠 Diagrama Mermaid – Modelo de Datos
@@ -141,9 +149,9 @@ CREATE TABLE IF NOT EXISTS posts (
 ```mermaid
 erDiagram
     posts {
-        INTEGER id PK "Identificador único del post"
-        TEXT title "Título del post"
-        TEXT body "Contenido del post"
+        INTEGER id PK
+        TEXT title
+        TEXT body
     }
 ```
 
