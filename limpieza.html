@@ -607,8 +607,8 @@ Número de registros duplicados: 2
 <h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza</h3>
 <div class="highlight"><pre><span></span><code>flowchart TD
     A[Inicio del Proceso] --&gt; B[Cargar base de datos: ingestion.db]
-    B --&gt; C[Leer tabla &#39;posts&#39; con Pandas]
-    C --&gt; D[Análisis exploratorio]
+    B --&gt; C[Leer tabla posts con Pandas]
+    C --&gt; D[Analisis exploratorio]
     D --&gt; D1[Contar registros]
     D --&gt; D2[Buscar nulos]
     D --&gt; D3[Buscar duplicados]
@@ -616,11 +616,11 @@ Número de registros duplicados: 2
     D3 --&gt; E[Proceso de limpieza]
     E --&gt; E1[Eliminar duplicados]
     E --&gt; E2[Rellenar nulos]
-    E2 --&gt; E2a[Numéricos -&gt; media]
-    E2 --&gt; E2b[Texto -&gt; método ffill]
-    E --&gt; E3[Conversión de tipos]
-    E3 --&gt; E3a[fecha -&gt; datetime]
-    E3 --&gt; E3b[monto -&gt; numérico y normalizado]
+    E2 --&gt; E2a[Numericos - media]
+    E2 --&gt; E2b[Texto - metodo ffill]
+    E --&gt; E3[Conversion de tipos]
+    E3 --&gt; E3a[fecha a datetime]
+    E3 --&gt; E3b[monto normalizado]
 
     E3b --&gt; F[Verificar limpieza]
     F --&gt; G[Exportar Excel: cleaning.xlsx]

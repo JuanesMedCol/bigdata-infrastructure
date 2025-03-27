@@ -417,29 +417,29 @@
 <hr/>
 <h2 id="diagrama-del-proceso-de-ingesta">🧠 Diagrama del Proceso de Ingesta</h2>
 <div class="highlight"><pre><span></span><code>flowchart TD
-    A[Inicio del proceso] --&gt; B[Llamada a la API externa - GET /posts]
+    A[Inicio del proceso] --&gt; B[Llamada a API externa - GET /posts]
     B --&gt; C{Respuesta 200 OK}
     C -- Si --&gt; D[Extraer datos en formato JSON]
     C -- No --&gt; Z[Terminar con error]
 
-    D --&gt; E[Crear carpetas de salida si no existen]
-    E --&gt; F[Conectar a base de datos SQLite]
+    D --&gt; E[Crear carpetas de salida]
+    E --&gt; F[Conectar a BD SQLite]
     F --&gt; G[Crear tabla posts si no existe]
-    G --&gt; H[Insertar o reemplazar registros en la tabla]
+    G --&gt; H[Insertar o reemplazar registros]
 
-    H --&gt; I[Cerrar conexion y confirmar inserciones]
+    H --&gt; I[Cerrar conexion y confirmar]
     I --&gt; J[Leer 10 registros con Pandas]
     J --&gt; K[Exportar a CSV]
     J --&gt; L[Exportar a Excel]
 
-    K --&gt; M[Iniciar generacion del informe de auditoria]
+    K --&gt; M[Generar informe de auditoria]
     L --&gt; M
 
-    M --&gt; N[Comparar datos extraidos con base de datos]
+    M --&gt; N[Comparar datos con BD]
     N --&gt; O[Contar coincidencias y errores]
-    O --&gt; P[Escribir archivo ingestion_report.txt]
+    O --&gt; P[Escribir ingestion_report.txt]
 
-    P --&gt; Q[Finalizar proceso con log de exito]
+    P --&gt; Q[Fin del proceso]
 </code></pre></div>
 </article>
 </div>
