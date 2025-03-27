@@ -4,29 +4,29 @@
   {{ super() }}
   <script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: false });
-
     document.addEventListener("DOMContentLoaded", function () {
-      // Busca bloques Mermaid envueltos en <pre><code>
-      const mermaidBlocks = document.querySelectorAll("pre code.language-mermaid");
+      mermaid.initialize({ startOnLoad: false });
 
-      mermaidBlocks.forEach((block, index) => {
+      const blocks = document.querySelectorAll("pre code.highlight");
+
+      blocks.forEach((block, i) => {
         const pre = block.closest("pre");
-        const wrapper = document.createElement("div");
-        wrapper.classList.add("mermaid");
 
-        // Decode HTML entities (&gt; → >, etc.)
-        const html = block.innerHTML
-          .replace(/&gt;/g, '>')
-          .replace(/&lt;/g, '<')
-          .replace(/&amp;/g, '&');
+        // Crear nuevo contenedor mermaid
+        const container = document.createElement("div");
+        container.className = "mermaid";
 
-        wrapper.innerHTML = html;
+        // Obtener texto plano (más seguro que innerHTML)
+        const code = block.textContent || block.innerText;
 
-        // Reemplaza el <pre> por el <div class="mermaid">
-        pre.parentNode.replaceChild(wrapper, pre);
+        // Pegarlo directamente
+        container.textContent = code;
+
+        // Reemplazar el <pre> por <div class="mermaid">
+        pre.replaceWith(container);
       });
 
+      // Renderizar todo
       mermaid.init(undefined, document.querySelectorAll(".mermaid"));
     });
   </script>
