@@ -53,7 +53,17 @@
   
   <script src="https://cdn.jsdelivr.net/npm/mermaid@8.8.4/dist/mermaid.min.js"></script>
   <script>
-    mermaid.initialize({ startOnLoad: true });
+    document.addEventListener("DOMContentLoaded", function () {
+      const blocks = document.querySelectorAll("code.language-mermaid");
+      blocks.forEach((block, index) => {
+        const pre = block.parentElement;
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("mermaid");
+        wrapper.innerHTML = block.textContent;
+        pre.replaceWith(wrapper);
+      });
+      mermaid.initialize({ startOnLoad: true });
+    });
   </script>
 
   </head>
