@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://juanesmedcol.github.io/bigdata-infrastructure/index.html</loc>
+         <lastmod>2025-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://juanesmedcol.github.io/bigdata-infrastructure/ingesta.html</loc>
+         <lastmod>2025-03-27</lastmod>
+    </url>
+    <url>
+         <loc>https://juanesmedcol.github.io/bigdata-infrastructure/limpieza.html</loc>
+         <lastmod>2025-03-27</lastmod>
+    </url>
 </urlset>
