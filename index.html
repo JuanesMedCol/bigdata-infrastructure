@@ -56,33 +56,29 @@
     mermaid.initialize({ startOnLoad: false });
 
     document.addEventListener("DOMContentLoaded", function () {
+      // Busca bloques Mermaid envueltos en <pre><code>
       const mermaidBlocks = document.querySelectorAll("pre code.language-mermaid");
+
       mermaidBlocks.forEach((block, index) => {
-        const parentPre = block.parentElement;
+        const pre = block.closest("pre");
         const wrapper = document.createElement("div");
         wrapper.classList.add("mermaid");
-        wrapper.innerHTML = block.textContent;
-        parentPre.replaceWith(wrapper);
+
+        // Decode HTML entities (&gt; → >, etc.)
+        const html = block.innerHTML
+          .replace(/&gt;/g, '>')
+          .replace(/&lt;/g, '<')
+          .replace(/&amp;/g, '&');
+
+        wrapper.innerHTML = html;
+
+        // Reemplaza el <pre> por el <div class="mermaid">
+        pre.parentNode.replaceChild(wrapper, pre);
       });
 
       mermaid.init(undefined, document.querySelectorAll(".mermaid"));
     });
   </script>
-
-  
-  <style>
-    body::before {
-      content: "✅ overrides/main.html ACTIVO";
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: limegreen;
-      color: black;
-      padding: 5px 10px;
-      font-weight: bold;
-      z-index: 9999;
-    }
-  </style>
 
   </head>
   
