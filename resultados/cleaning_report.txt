@@ -1,0 +1,11 @@
+📋 **Informe de Limpieza de Datos**
+
+Número total de registros: 100
+Número de valores nulos por columna:
+id       0
+title    0
+body     0
+dtype: int64
+Número de registros duplicados: 0
+
+✅ Número de registros después de limpieza: 100
