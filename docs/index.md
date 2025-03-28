@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS posts (
 
 ## 🧠 Diagrama Mermaid – Modelo de Datos
 
-```diagram
+``` mermaid
 erDiagram
     posts {
         INTEGER id PK

@@ -39,7 +39,10 @@ nav:
 markdown_extensions:
   - tables
   - pymdownx.tabbed
-  - pymdownx.superfences
+  - pymdownx.superfences: 
+      custom_fences:
+        - name: mermaid
+          class: mermaid
   - pymdownx.emoji
   - attr_list
   - admonition

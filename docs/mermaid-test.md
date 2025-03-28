@@ -1,7 +1,12 @@
 # Prueba de Mermaid
 
-```mermaid
-graph TD
-  A[Inicio] --> B[Proceso]
-  B --> C[Fin]
+``` mermaid
+erDiagram
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
+  CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```

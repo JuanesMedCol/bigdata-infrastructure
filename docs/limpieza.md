@@ -118,7 +118,7 @@ El script completa el proceso con logs informativos:
 
 ### 🧠 Diagrama del Flujo de Limpieza
 
-```diagram
+``` mermaid
 flowchart TD
     A[Inicio del Proceso] --> B[Cargar base de datos: ingestion.db]
     B --> C[Leer tabla posts con Pandas]
