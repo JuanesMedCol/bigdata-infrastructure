@@ -87,7 +87,7 @@ Proceso finalizado correctamente ✅
 
 ### 📎 Archivos descargables
 
-- [CSV de Ingesta](## 🧠 Diagrama del Flujo de Limpieza  ```mermaid (Pega aquí el código del diagrama)/ingestion.csv)
+- [CSV de Ingesta](resultados/ingestion.csv)
 - [Excel de Ingesta](resultados/ingestion.xlsx)
 - [Reporte de Auditoría](resultados/ingestion_report.txt)
 
