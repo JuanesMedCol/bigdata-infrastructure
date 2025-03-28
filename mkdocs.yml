@@ -11,6 +11,7 @@ nav:
   - Inicio: index.md
   - Ingesta de Datos: ingesta.md
   - Limpieza de Datos: limpieza.md
+  - Test Mermaid: mermaid-test.md
 
 markdown_extensions:
   - pymdownx.superfences
