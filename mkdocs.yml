@@ -5,6 +5,18 @@ use_directory_urls: false
 
 theme:
   name: material
+  palette:
+    primary: green
+    accent: light green
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - content.code.copy
+    - content.code.highlight
+    - content.math
+    - content.mermaid
 
 nav:
   - Inicio: index.md
