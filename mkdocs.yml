@@ -5,9 +5,22 @@ use_directory_urls: false
 
 theme:
   name: material
-  palette:
+  
+palette:
+  - scheme: default
     primary: green
     accent: light green
+    toggle:
+      icon: material/weather-night
+      name: Cambiar a modo oscuro
+
+  - scheme: slate
+    primary: green
+    accent: light green
+    toggle:
+      icon: material/weather-sunny
+      name: Cambiar a modo claro
+
   features:
     - navigation.instant
     - navigation.tabs
@@ -27,19 +40,12 @@ nav:
 markdown_extensions:
   - tables
   - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.emoji
   - attr_list
   - admonition
   - toc:
       permalink: true
-  - pymdownx.superfences:
-    custom_fences:
-      - name: mermaid
-        class: mermaid
-        format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  
 
 plugins:
   - search
