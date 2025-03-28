@@ -5,19 +5,21 @@ use_directory_urls: false
 
 theme:
   name: material
+  icon:
+    logo: material/analytics
   palette:
     - scheme: default
-      primary: green
-      accent: light green
+      primary: blue grey
+      accent: teal
       toggle:
-        icon: material/weather-night
+        icon: material/toggle-switch
         name: Cambiar a modo oscuro
 
     - scheme: slate
-      primary: green
-      accent: light green
+      primary: blue grey
+      accent: teal
       toggle:
-        icon: material/weather-sunny
+        icon: material/toggle-switch-off-outline
         name: Cambiar a modo claro
 
   features:
@@ -34,18 +36,30 @@ nav:
   - Inicio: index.md
   - Ingesta de Datos: ingesta.md
   - Limpieza de Datos: limpieza.md
-  - Test Mermaid: mermaid-test.md
 
 markdown_extensions:
   - tables
+  - attr_list
+  - md_in_html
   - pymdownx.tabbed
   - pymdownx.superfences: 
       custom_fences:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.emoji
-  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.details
+  - pymdownx.tasklist
+  - pymdownx.magiclink
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight
+  - pymdownx.smartsymbols
   - admonition
   - toc:
       permalink: true
