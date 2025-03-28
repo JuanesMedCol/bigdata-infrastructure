@@ -95,6 +95,10 @@ jobs:
             cp src/static/csv/*.csv docs/resultados/
             cp src/static/xlsx/*.xlsx docs/resultados/
 
+      - name: Mostrar plugins activos
+        run: |
+            mkdocs build --verbose
+
       - name: Build MkDocs site
         run: mkdocs build
 
