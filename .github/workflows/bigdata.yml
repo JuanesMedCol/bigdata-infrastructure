@@ -88,19 +88,22 @@ jobs:
           pip install --upgrade pip
           pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
 
-      - name: Build MkDocs site
-        run: mkdocs build
-
       - name: Copiar archivos generados a docs/resultados
         run: |
-          mkdir -p docs/resultados
-          cp src/static/auditoria/*.txt docs/resultados/
-          cp src/static/csv/*.csv docs/resultados/
-          cp src/static/xlsx/*.xlsx docs/resultados/
+            mkdir -p docs/resultados
+            cp src/static/auditoria/*.txt docs/resultados/
+            cp src/static/csv/*.csv docs/resultados/
+            cp src/static/xlsx/*.xlsx docs/resultados/
+
+      - name: Build MkDocs site
+        run: mkdocs build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./site
+
+      - name: Verificar contenido de site/
+        run: ls -R site/
 
