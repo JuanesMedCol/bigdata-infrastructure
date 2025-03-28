@@ -5,21 +5,20 @@ use_directory_urls: false
 
 theme:
   name: material
-  
-palette:
-  - scheme: default
-    primary: green
-    accent: light green
-    toggle:
-      icon: material/weather-night
-      name: Cambiar a modo oscuro
+  palette:
+    - scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a modo oscuro
 
-  - scheme: slate
-    primary: green
-    accent: light green
-    toggle:
-      icon: material/weather-sunny
-      name: Cambiar a modo claro
+    - scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a modo claro
 
   features:
     - navigation.instant
