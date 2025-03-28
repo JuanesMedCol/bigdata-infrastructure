@@ -205,10 +205,14 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="prueba-de-mermaid">Prueba de Mermaid<a class="headerlink" href="#prueba-de-mermaid" title="Permanent link">¶</a></h1>
-<div class="highlight"><pre><span></span><code>graph TD
-  A[Inicio] --&gt; B[Proceso]
-  B --&gt; C[Fin]
-</code></pre></div>
+<pre class="mermaid"><code>erDiagram
+  CUSTOMER ||--o{ ORDER : places
+  ORDER ||--|{ LINE-ITEM : contains
+  LINE-ITEM {
+    string name
+    int pricePerUnit
+  }
+  CUSTOMER }|..|{ DELIVERY-ADDRESS : uses</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

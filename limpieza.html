@@ -382,7 +382,7 @@ Número de registros duplicados: 2
 </ul>
 <hr/>
 <h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza<a class="headerlink" href="#diagrama-del-flujo-de-limpieza" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code>flowchart TD
+<pre class="mermaid"><code>flowchart TD
     A[Inicio del Proceso] --&gt; B[Cargar base de datos: ingestion.db]
     B --&gt; C[Leer tabla posts con Pandas]
     C --&gt; D[Analisis exploratorio]
@@ -404,8 +404,7 @@ Número de registros duplicados: 2
     F --&gt; H[Generar reporte: cleaning_report.txt]
 
     G --&gt; I[Fin del proceso]
-    H --&gt; I
-</code></pre></div>
+    H --&gt; I</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>

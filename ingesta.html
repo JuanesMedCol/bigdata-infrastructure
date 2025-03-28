@@ -391,7 +391,7 @@
 </ul>
 <hr/>
 <h2 id="diagrama-del-proceso-de-ingesta">🧠 Diagrama del Proceso de Ingesta<a class="headerlink" href="#diagrama-del-proceso-de-ingesta" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code>flowchart TD
+<pre class="mermaid"><code>flowchart TD
     A[Inicio del proceso] --&gt; B[Llamada a API externa - GET /posts]
     B --&gt; C{Respuesta 200 OK}
     C -- Si --&gt; D[Extraer datos en formato JSON]
@@ -414,8 +414,7 @@
     N --&gt; O[Contar coincidencias y errores]
     O --&gt; P[Escribir ingestion_report.txt]
 
-    P --&gt; Q[Fin del proceso]
-</code></pre></div>
+    P --&gt; Q[Fin del proceso]</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
