@@ -1,6 +1,6 @@
 # Prueba de Mermaid
 
-```mermaid
+```diagram
 graph TD
   A[Inicio] --> B[Proceso]
   B --> C[Fin]

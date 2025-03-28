@@ -95,7 +95,7 @@ Proceso finalizado correctamente ✅
 
 ## 🧠 Diagrama del Proceso de Ingesta
 
-```mermaid
+```diagram
 flowchart TD
     A[Inicio del proceso] --> B[Llamada a API externa - GET /posts]
     B --> C{Respuesta 200 OK}
