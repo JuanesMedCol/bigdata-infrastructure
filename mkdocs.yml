@@ -13,10 +13,10 @@ theme:
     - navigation.tabs
     - navigation.sections
     - toc.integrate
-    - content.code.copy
-    - content.code.highlight
     - content.math
     - content.mermaid
+    - content.code.copy
+    - content.code.highlight
 
 nav:
   - Inicio: index.md
@@ -25,13 +25,23 @@ nav:
   - Test Mermaid: mermaid-test.md
 
 markdown_extensions:
-  - pymdownx.superfences
+  - tables
   - pymdownx.tabbed
   - attr_list
   - admonition
   - toc:
       permalink: true
+  - pymdownx.superfences:
+    custom_fences:
+      - name: mermaid
+        class: mermaid
+        format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  
 
 plugins:
   - search
   - mermaid2
+  - glightbox

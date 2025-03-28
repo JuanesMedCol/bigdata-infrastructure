@@ -12,7 +12,8 @@ setup(
         "requests",
         "mkdocs",
         "mkdocs-material",
-        "mkdocs-mermaid2-plugin"
+        "mkdocs-mermaid2-plugin",
+        "mkdocs-glightbox",
     ],
     author="Juan Esteban Atehortua Sanchez",
     author_email="juan.atehortua@est.iudigital.edu.co",

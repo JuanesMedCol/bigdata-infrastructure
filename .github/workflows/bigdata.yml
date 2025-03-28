@@ -86,7 +86,7 @@ jobs:
       - name: Install MkDocs and theme
         run: |
           pip install --upgrade pip
-          pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin
+          pip install mkdocs mkdocs-material mkdocs-mermaid2-plugin mkdocs-glightbox
 
       - name: Copiar archivos generados a docs/resultados
         run: |
