@@ -73,7 +73,7 @@ logging.info(f"Datos insertados correctamente en la base de datos ({len(data)} r
 
 # Conectar a la base de datos para exportar
 conn = sqlite3.connect(os.path.join(folder_path_db, db_file))
-df = pd.read_sql_query("SELECT * FROM posts LIMIT 10", conn)
+df = pd.read_sql_query("SELECT * FROM posts", conn)
 
 # Exportar a CSV y Excel
 df.to_csv(os.path.join(folder_path_csv, csv_file), index=False)

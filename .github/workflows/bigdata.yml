@@ -71,6 +71,33 @@ jobs:
             src/static/auditoria/cleaning_report.txt
             src/static/xlsx/cleaning.xlsx
 
+  enrich_data:
+    needs: clean_data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+  
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+  
+      - name: Install dependencies
+        run: |
+          pip install pandas openpyxl lxml html5lib
+  
+      - name: Run enrichment script
+        run: python src/enrichment.py
+  
+      - name: Upload enrichment results
+        uses: actions/upload-artifact@v4
+        with:
+          name: enrichment-results
+          path: |
+            src/static/auditoria/enriched_report.txt
+            src/static/xlsx/enriched_data.xlsx
+
   build_docs:
     needs: clean_data
     runs-on: ubuntu-latest
