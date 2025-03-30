@@ -25,7 +25,10 @@ original_count = len(df_base)
 logging.info(f"📥 Dataset base cargado: {original_count} registros.")
 
 # API de geolocalización
-API_KEY = "ce075825b9574c5d92b38bcaad143366"  # ← Reemplaza esto
+API_KEY = os.getenv("OPENCAGE_API_KEY", "")
+if not API_KEY:
+    raise ValueError("❌ No se encontró la variable de entorno 'OPENCAGE_API_KEY'")
+
 
 def geolocalizar_ciudad(ciudad):
     if not ciudad:

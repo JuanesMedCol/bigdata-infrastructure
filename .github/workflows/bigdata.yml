@@ -73,32 +73,35 @@ jobs:
             src/static/xlsx/cleaning.xlsx
 
   enrich_data:
-    needs: clean_data
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: |
-          pip install pandas openpyxl requests tqdm
-
-      - name: Run enrichment script
-        run: python src/enrichment.py
-
-      - name: Upload enrichment results
-        uses: actions/upload-artifact@v4
-        with:
-          name: enrichment-results
-          path: |
-            src/static/db/ingestion.db
-            src/static/auditoria/enriched_report.txt
-            src/static/xlsx/enriched_data.xlsx
+      needs: clean_data
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+  
+        - name: Set up Python
+          uses: actions/setup-python@v4
+          with:
+            python-version: '3.9'
+  
+        - name: Install dependencies
+          run: |
+            pip install pandas openpyxl requests tqdm
+  
+        - name: Export secret to env
+          run: echo "OPENCAGE_API_KEY=${{ secrets.OPENCAGE_API_KEY }}" >> $GITHUB_ENV
+  
+        - name: Run enrichment script
+          run: python src/enrichment.py
+ 
+        - name: Upload enrichment results
+          uses: actions/upload-artifact@v4
+          with:
+            name: enrichment-results
+            path: |
+              src/static/db/ingestion.db
+              src/static/auditoria/enriched_report.txt
+              src/static/xlsx/enriched_data.xlsx         
 
   generate_report:
     needs: enrich_data
