@@ -44,6 +44,7 @@ nav:
       - Limpieza: cleaning.md
       - Enriquecimiento: enrichment.md
       - Base de Datos: structure_db.md
+      - Automatización: automation.md
       - Diagramas: diagrams.md
       - Auditoría: report.md
 

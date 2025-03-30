@@ -1,24 +1,25 @@
-# Diagramas
+# 📊 Diagramas del Proyecto
 
 1. **Ingesta**:
-
    - Se conecta a la API pública de RESTCountries.
    - Se guarda en SQLite (`countries`) y se exporta en formatos CSV y Excel.
    - Se genera un informe (`ingestion_report.txt`).
-2. **Limpieza**:
 
+2. **Limpieza**:
    - Se eliminan duplicados.
    - Se imputan nulos y se corrigen tipos de datos.
    - Se almacena el resultado limpio en `countries_clean` y Excel.
-3. **Enriquecimiento**:
 
+3. **Enriquecimiento**:
    - Usa la API de OpenCage para obtener coordenadas por capital.
    - Añade columnas de latitud y longitud.
    - Se guarda como `countries_enriched` en SQLite y Excel.
-4. **Flujo Secuencial**:
 
+4. **Flujo Secuencial**:
    - Cada fase depende de la anterior.
    - Los reportes permiten trazabilidad del estado de los datos.
+
+---
 
 === "General"
 
@@ -50,36 +51,34 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Leer datos de tabla countries] --> B[Eliminar duplicados]
-    B --> C[Imputar valores nulos (media, ffill)]
-    C --> D[Convertir tipos: poblacion y area]
-    D --> E[Guardar en cleaning.xlsx y countries_clean]
-    E --> F[Generar cleaning_report.txt]
-
+    A[Solicitar datos de API RESTCountries] --> B[Extraer atributos clave]
+    B --> C[Guardar en CSV y Excel]
+    C --> D[Insertar en tabla countries (SQLite)]
+    D --> E[Generar ingestion_report.txt]
 ```
 
 === "Limpieza"
 
 ```mermaid
 flowchart TD
-    A[🔍 Leer datos de tabla countries] --> B[❌ Eliminar duplicados]
-    B --> C[🧪 Imputar valores nulos (media, ffill)]
-    C --> D[🔢 Convertir tipos: poblacion y area]
-    D --> E[💾 Guardar en cleaning.xlsx y tabla countries_clean]
-    E --> F[📝 Generar cleaning_report.txt]
+    A[Leer datos de tabla countries] --> B[Eliminar duplicados]
+    B --> C[Imputar valores nulos (media, ffill)]
+    C --> D[Convertir tipos: poblacion y area]
+    D --> E[Guardar en cleaning.xlsx y countries_clean]
+    E --> F[Generar cleaning_report.txt]
 ```
 
 === "Enriquecimiento"
 
 ```mermaid
 flowchart TD
-    A[📥 Cargar cleaning.xlsx] --> B[🔎 Leer columna capital]
+    A[Cargar cleaning.xlsx] --> B[Leer columna capital]
     B --> C{¿Capital válida?}
-    C -- Sí --> D[🌐 Consultar API OpenCage]
-    D --> E[🧭 Añadir latitud y longitud]
-    E --> F[💾 Guardar en enriched_data.xlsx y countries_enriched]
-    F --> G[📝 Generar enriched_report.txt]
-    C -- No --> H[⚠️ Omitir enriquecimiento]
+    C -- Sí --> D[Consultar API OpenCage]
+    D --> E[Añadir latitud y longitud]
+    E --> F[Guardar en enriched_data.xlsx y countries_enriched]
+    F --> G[Generar enriched_report.txt]
+    C -- No --> H[Omitir enriquecimiento]
 ```
 
 === "Entidad-Relación"
@@ -123,10 +122,9 @@ erDiagram
 
 ```mermaid
 flowchart TD
-    A[Ingesta desde API RESTCountries] --> B[Guardar en SQLite (countries) y Excel]
-    B --> C[Limpieza de Datos (dropna, ffill, mean)]
-    C --> D[Guardar limpio en cleaning.xlsx y countries_clean]
-    D --> E[Enriquecimiento con coordenadas]
+    A[Ingesta API RESTCountries] --> B[Guardar en SQLite y Excel]
+    B --> C[Limpieza de Datos]
+    C --> D[Guardar en cleaning.xlsx y countries_clean]
+    D --> E[Enriquecimiento geográfico]
     E --> F[Guardar en enriched_data.xlsx y countries_enriched]
-
 ```
