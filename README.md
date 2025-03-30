@@ -37,31 +37,45 @@ flowchart TD
 
 ```
 .
-├── run.py
-├── requirements.txt
-├── README.md
-├── src/
-│   ├── ingestion.py
-│   ├── cleaning.py
-│   ├── enrichment.py
-│   └── static/
-│       ├── db/
-│       │   └── ingestion.db
-│       ├── csv/
-│       │   └── ingestion.csv
-│       ├── xlsx/
-│       │   ├── ingestion.xlsx
-│       │   ├── cleaning.xlsx
-│       │   └── enriched_data.xlsx
-│       └── auditoria/
-│           ├── ingestion_report.txt
-│           ├── cleaning_report.txt
-│           └── enriched_report.txt
-└── docs/
-    ├── index.md
-    ├── ingestion.md
-    ├── cleaning.md
-    └── enrichment.md
+│   .gitattributes
+│   .gitignore
+│   main.py
+│   mkdocs.yml
+│   README.md
+│   requirements.txt
+│   run.py
+│   setup.py
+│
+├───.github
+│   └───workflows
+│           bigdata.yml
+├───build
+│   └───bdist.win-amd64
+├───docs
+│       cleaning.md
+│       enrichment.md
+│       index.md
+│       ingestion.md
+│       report.md
+│       structure_db.md
+└───src
+    │   cleaning.py
+    │   enrichment.py
+    │   ingestion.py
+    │   report.py
+    └───static
+        ├───auditoria
+        │       cleaning_report.txt
+        │       enriched_report.txt
+        │       ingestion_report.txt
+        ├───csv
+        │       ingestion.csv
+        ├───db
+        │       ingestion.db
+        └───xlsx
+                cleaning.xlsx
+                enriched_data.xlsx
+                ingestion.xlsx
 ```
 
 ## 🛠️ **Requisitos**
@@ -88,7 +102,7 @@ git clone https://github.com/JuanesMedCol/bigdata-infrastructure.git
 cd bigdata-infrastructure
 ```
 
-3. Instala las dependencias con cualqquiera de las siguientes formas:
+3. Instala las dependencias con cualquiera de las siguientes formas:
 
 ```bash
 Opcion 1: pip install -r requirements.txt

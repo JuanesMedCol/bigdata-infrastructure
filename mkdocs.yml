@@ -30,7 +30,11 @@ theme:
     - content.math
     - content.mermaid
     - content.code.copy
+    - content.code.select
+    - content.code.annotate
     - content.code.highlight
+    - content.tabs.link
+    - content.tabs.code
 
 nav:
   - Inicio: index.md
@@ -38,6 +42,7 @@ nav:
   - Limpieza de Datos: cleaning.md
   - Enriquecimiento de Datos: enrichment.md
   - Estructura de la Base de Datos: structure_db.md
+    - Diagramas: diagrams.md
   - Informe de Auditoría: report.md
 
 markdown_extensions:
@@ -50,6 +55,10 @@ markdown_extensions:
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.emoji
   - pymdownx.details
   - pymdownx.tasklist
