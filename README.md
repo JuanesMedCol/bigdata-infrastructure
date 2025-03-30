@@ -4,7 +4,7 @@ Este proyecto implementa una arquitectura de procesamiento de datos basada en Py
 
 ---
 
-<p style="text-align:center;"><h2><a href="https://juanesmedcol.github.io/bigdata-infrastructure/"></a></h2></p>
+<h1 align="center"><a href="https://juanesmedcol.github.io/bigdata-infrastructure/">Examina la Documentación del proyecto</a></h1>
 
 ---
 
