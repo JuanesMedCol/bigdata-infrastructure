@@ -126,14 +126,6 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
-<a class="md-tabs__link" href="diagrams.html">
-          
-  
-  Estructura del Proyecto
-
-        </a>
-</li>
 </ul>
 </div>
 </nav>
@@ -213,31 +205,6 @@
       🧩 Estructura de las tablas
     </span>
 </a>
-<nav aria-label="🧩 Estructura de las tablas" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries">
-<span class="md-ellipsis">
-      Tabla countries
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_clean">
-<span class="md-ellipsis">
-      Tabla countries_clean
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_enriched">
-<span class="md-ellipsis">
-      Tabla countries_enriched
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -278,7 +245,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="ingestion.html">
 <span class="md-ellipsis">
-    Ingesta de Datos
+    Ingesta
     
   </span>
 </a>
@@ -286,7 +253,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="cleaning.html">
 <span class="md-ellipsis">
-    Limpieza de Datos
+    Limpieza
     
   </span>
 </a>
@@ -294,7 +261,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="enrichment.html">
 <span class="md-ellipsis">
-    Enriquecimiento de Datos
+    Enriquecimiento
     
   </span>
 </a>
@@ -307,24 +274,6 @@
   </span>
 </a>
 </li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-<span class="md-ellipsis">
-    Estructura del Proyecto
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
-<span class="md-nav__icon md-icon"></span>
-            Estructura del Proyecto
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="diagrams.html">
 <span class="md-ellipsis">
@@ -336,7 +285,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="report.html">
 <span class="md-ellipsis">
-    Informe de Auditoría
+    Auditoría
     
   </span>
 </a>
@@ -365,7 +314,6 @@
 <p>✅ Genera informes de auditoría detallados con el estado de cada proceso.</p>
 <hr/>
 <h2 id="estructura-del-proyecto">📂 <strong>Estructura del Proyecto</strong><a class="headerlink" href="#estructura-del-proyecto" title="Permanent link">¶</a></h2>
-<p><a href="https://github.com/JuanesMedCol/bigdata-infrastructure/"><strong>Repositorio del Proyecto</strong></a></p>
 <div class="highlight"><pre><span></span><code>[bigdata-infrastructure]
 │   README.md
 │   requirements.txt
@@ -416,11 +364,11 @@
 <hr/>
 <h2 id="modelo-de-base-de-datos">📊 Modelo de Base de Datos<a class="headerlink" href="#modelo-de-base-de-datos" title="Permanent link">¶</a></h2>
 <h3 id="estructura-de-las-tablas">🧩 Estructura de las tablas<a class="headerlink" href="#estructura-de-las-tablas" title="Permanent link">¶</a></h3>
-<h4 id="tabla-countries">Tabla <code>countries</code><a class="headerlink" href="#tabla-countries" title="Permanent link">¶</a></h4>
+<p>Tabla <code>countries</code></p>
 <p>Contiene la información original obtenida desde la API.</p>
-<h4 id="tabla-countries_clean">Tabla <code>countries_clean</code><a class="headerlink" href="#tabla-countries_clean" title="Permanent link">¶</a></h4>
+<p>Tabla <code>countries_clean</code></p>
 <p>Contiene los datos luego de ser limpiados.</p>
-<h4 id="tabla-countries_enriched">Tabla <code>countries_enriched</code><a class="headerlink" href="#tabla-countries_enriched" title="Permanent link">¶</a></h4>
+<p>Tabla <code>countries_enriched</code></p>
 <p>Contiene los datos enriquecidos con latitud y longitud.</p>
 <div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">countries</span><span class="w"> </span><span class="p">(</span>
 <span class="w">    </span><span class="n">pais</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>

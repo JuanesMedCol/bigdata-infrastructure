@@ -119,19 +119,11 @@
 
       </a>
 </li>
-<li class="md-tabs__item">
+<li class="md-tabs__item md-tabs__item--active">
 <a class="md-tabs__link" href="proyect.html">
           
   
   Documentación del Proyecto
-
-        </a>
-</li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="diagrams.html">
-          
-  
-  Estructura del Proyecto
 
         </a>
 </li>
@@ -159,16 +151,16 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
 <span class="md-ellipsis">
     Documentación del Proyecto
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Documentación del Proyecto
@@ -185,7 +177,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="ingestion.html">
 <span class="md-ellipsis">
-    Ingesta de Datos
+    Ingesta
     
   </span>
 </a>
@@ -193,7 +185,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="cleaning.html">
 <span class="md-ellipsis">
-    Limpieza de Datos
+    Limpieza
     
   </span>
 </a>
@@ -201,7 +193,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="enrichment.html">
 <span class="md-ellipsis">
-    Enriquecimiento de Datos
+    Enriquecimiento
     
   </span>
 </a>
@@ -214,24 +206,6 @@
   </span>
 </a>
 </li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
-<span class="md-ellipsis">
-    Estructura del Proyecto
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_3">
-<span class="md-nav__icon md-icon"></span>
-            Estructura del Proyecto
-          </label>
-<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <a class="md-nav__link md-nav__link--active" href="diagrams.html">
@@ -244,7 +218,7 @@
 <li class="md-nav__item">
 <a class="md-nav__link" href="report.html">
 <span class="md-ellipsis">
-    Informe de Auditoría
+    Auditoría
     
   </span>
 </a>
@@ -261,78 +235,80 @@
 <article class="md-content__inner md-typeset">
 <h1 id="diagramas">Diagramas<a class="headerlink" href="#diagramas" title="Permanent link">¶</a></h1>
 <ol>
-<li><strong>Ingesta</strong>:</li>
-<li>Se conecta a la API pública de RESTCountries.</li>
-<li>Se guarda en SQLite (<code>countries</code>) y se exporta en formatos CSV y Excel.</li>
 <li>
-<p>Se genera un informe (<code>ingestion_report.txt</code>).</p>
+<p><strong>Ingesta</strong>:</p>
 </li>
+<li>
+<p>Se conecta a la API pública de RESTCountries.</p>
+</li>
+<li>Se guarda en SQLite (<code>countries</code>) y se exporta en formatos CSV y Excel.</li>
+<li>Se genera un informe (<code>ingestion_report.txt</code>).</li>
 <li>
 <p><strong>Limpieza</strong>:</p>
 </li>
-<li>Se eliminan duplicados.</li>
-<li>Se imputan nulos y se corrigen tipos de datos.</li>
 <li>
-<p>Se almacena el resultado limpio en <code>countries_clean</code> y Excel.</p>
+<p>Se eliminan duplicados.</p>
 </li>
+<li>Se imputan nulos y se corrigen tipos de datos.</li>
+<li>Se almacena el resultado limpio en <code>countries_clean</code> y Excel.</li>
 <li>
 <p><strong>Enriquecimiento</strong>:</p>
 </li>
-<li>Usa la API de OpenCage para obtener coordenadas por capital.</li>
-<li>Añade columnas de latitud y longitud.</li>
 <li>
-<p>Se guarda como <code>countries_enriched</code> en SQLite y Excel.</p>
+<p>Usa la API de OpenCage para obtener coordenadas por capital.</p>
 </li>
+<li>Añade columnas de latitud y longitud.</li>
+<li>Se guarda como <code>countries_enriched</code> en SQLite y Excel.</li>
 <li>
 <p><strong>Flujo Secuencial</strong>:</p>
 </li>
-<li>Cada fase depende de la anterior.</li>
+<li>
+<p>Cada fase depende de la anterior.</p>
+</li>
 <li>Los reportes permiten trazabilidad del estado de los datos.</li>
 </ol>
-<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="general" name="__tabbed_1" type="radio"><label for="general">General</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">General</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    subgraph IN[🔹 Fase 1: Ingesta de Datos]
-        A1[🌐 Consulta API RESTCountries]
-        A2[📊 Extracción de atributos: país, capital, región, subregión, población, área]
-        A3[🗃️ Guardar en tabla SQLite: countries]
-        A4[📄 Exportar a Excel y CSV]
-        A5[📝 Generar reporte de auditoría]
-        A1 --&gt; A2 --&gt; A3 --&gt; A4 --&gt; A5
-    end
+    A1[Consulta API RESTCountries] --&gt; A2[Extraer datos]
+    A2 --&gt; A3[Guardar en SQLite: countries]
+    A3 --&gt; A4[Exportar a Excel y CSV]
+    A4 --&gt; A5[Generar reporte de auditoría]
 
-    subgraph CL[🔹 Fase 2: Limpieza de Datos]
-        B1[📥 Leer datos de tabla countries]
-        B2[❌ Eliminar duplicados]
-        B3[🧼 Imputar nulos (media para números, ffill para texto)]
-        B4[🔢 Conversión de tipos: población y área]
-        B5[💾 Guardar en tabla countries_clean y cleaning.xlsx]
-        B6[📝 Generar cleaning_report.txt]
-        B1 --&gt; B2 --&gt; B3 --&gt; B4 --&gt; B5 --&gt; B6
-    end
+    A5 --&gt; B1[Leer countries desde SQLite]
+    B1 --&gt; B2[Eliminar duplicados]
+    B2 --&gt; B3[Imputar nulos (media / ffill)]
+    B3 --&gt; B4[Convertir tipos: población y área]
+    B4 --&gt; B5[Guardar en countries_clean y Excel]
+    B5 --&gt; B6[Generar cleaning_report.txt]
 
-    subgraph EN[🔹 Fase 3: Enriquecimiento Geográfico]
-        C1[📥 Leer cleaning.xlsx]
-        C2[🔎 Extraer columna capital]
-        C3{¿Capital válida?}
-        C4[🌍 Consultar API OpenCage (1s por consulta)]
-        C5[➕ Añadir latitud y longitud]
-        C6[💾 Guardar en countries_enriched y enriched_data.xlsx]
-        C7[📝 Generar enriched_report.txt]
-        C3 -- Sí --&gt; C4 --&gt; C5 --&gt; C6 --&gt; C7
-        C3 -- No --&gt; Z[⚠️ Omitir registro]
-        C1 --&gt; C2 --&gt; C3
-    end
-
-    IN --&gt; CL --&gt; EN</code></pre>
-<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="ingesta" name="__tabbed_2" type="radio"><label for="ingesta">Ingesta</label><div class="tabbed-content"></div>
+    B6 --&gt; C1[Leer cleaning.xlsx]
+    C1 --&gt; C2[Extraer capitales]
+    C2 --&gt; C3{¿Capital válida?}
+    C3 -- Sí --&gt; C4[Consultar API OpenCage]
+    C4 --&gt; C5[Añadir latitud y longitud]
+    C5 --&gt; C6[Guardar en countries_enriched y Excel]
+    C6 --&gt; C7[Generar enriched_report.txt]
+    C3 -- No --&gt; CZ[Omitir registro]</code></pre>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Ingesta</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[🌐 Solicitar datos a RESTCountries API] --&gt; B[📊 Extraer campos clave]
-    B --&gt; C[📥 Guardar en ingestion.csv e ingestion.xlsx]
-    C --&gt; D[🗃️ Insertar en tabla countries de SQLite]
-    D --&gt; E[📝 Generar ingestion_report.txt]</code></pre>
-<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="limpieza" name="__tabbed_3" type="radio"><label for="limpieza">Limpieza</label><div class="tabbed-content"></div>
+    A[Leer datos de tabla countries] --&gt; B[Eliminar duplicados]
+    B --&gt; C[Imputar valores nulos (media, ffill)]
+    C --&gt; D[Convertir tipos: poblacion y area]
+    D --&gt; E[Guardar en cleaning.xlsx y countries_clean]
+    E --&gt; F[Generar cleaning_report.txt]
+</code></pre>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Limpieza</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
     A[🔍 Leer datos de tabla countries] --&gt; B[❌ Eliminar duplicados]
@@ -340,7 +316,10 @@
     C --&gt; D[🔢 Convertir tipos: poblacion y area]
     D --&gt; E[💾 Guardar en cleaning.xlsx y tabla countries_clean]
     E --&gt; F[📝 Generar cleaning_report.txt]</code></pre>
-<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="enriquecimiento" name="__tabbed_4" type="radio"><label for="enriquecimiento">Enriquecimiento</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enriquecimiento</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
     A[📥 Cargar cleaning.xlsx] --&gt; B[🔎 Leer columna capital]
@@ -350,7 +329,10 @@
     E --&gt; F[💾 Guardar en enriched_data.xlsx y countries_enriched]
     F --&gt; G[📝 Generar enriched_report.txt]
     C -- No --&gt; H[⚠️ Omitir enriquecimiento]</code></pre>
-<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="entidad-relación" name="__tabbed_5" type="radio"><label for="entidad-relación">Entidad-Relación</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Entidad-Relación</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>erDiagram
     countries {
@@ -384,14 +366,18 @@
 
     countries ||--|| countries_clean : limpieza
     countries_clean ||--|| countries_enriched : enriquecimiento</code></pre>
-<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="resumen" name="__tabbed_6" type="radio"><label for="resumen">Resumen</label><div class="tabbed-content"></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:1"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Resumen</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[🌍 Ingesta API RESTCountries] --&gt; B[🗃️ Guardar en SQLite (countries) y Excel]
-    B --&gt; C[🧼 Limpieza de Datos (dropna, ffill, mean)]
-    C --&gt; D[🗃️ Guardar limpio en cleaning.xlsx y countries_clean]
-    D --&gt; E[🌍 Enriquecimiento con coordenadas]
-    E --&gt; F[🗃️ Guardar en enriched_data.xlsx y countries_enriched]</code></pre>
+    A[Ingesta desde API RESTCountries] --&gt; B[Guardar en SQLite (countries) y Excel]
+    B --&gt; C[Limpieza de Datos (dropna, ffill, mean)]
+    C --&gt; D[Guardar limpio en cleaning.xlsx y countries_clean]
+    D --&gt; E[Enriquecimiento con coordenadas]
+    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]
+</code></pre>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
