@@ -68,6 +68,7 @@ jobs:
         with:
           name: cleaning-results
           path: |
+            src/static/db/ingestion.db
             src/static/auditoria/cleaning_report.txt
             src/static/xlsx/cleaning.xlsx
 
@@ -85,7 +86,7 @@ jobs:
   
       - name: Install dependencies
         run: |
-          pip install pandas openpyxl lxml html5lib requests time tqdm logging sqlite3
+          pip install pandas openpyxl requests tqdm
   
       - name: Run enrichment script
         run: python src/enrichment.py
@@ -95,6 +96,7 @@ jobs:
         with:
           name: enrichment-results
           path: |
+            src/static/db/ingestion.db
             src/static/auditoria/enriched_report.txt
             src/static/xlsx/enriched_data.xlsx
 
