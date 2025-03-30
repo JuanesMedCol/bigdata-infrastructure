@@ -49,35 +49,40 @@
 === "Ingesta"
 
     ```mermaid
-    graph TD
-        A[Solicitar API RESTCountries] --> B[Extraer campos]
-        B --> C[Guardar CSV y Excel]
-        C --> D[Insertar en SQLite]
-        D --> E[Generar reporte ingesta]
+    flowchart TD
+        A[Solicitar datos de API RESTCountries] --> B[Extraer atributos clave]
+        B --> C[Guardar en archivo CSV y Excel]
+        C --> D[Guardar en tabla countries de SQLite]
+        D --> E[Generar archivo de auditoría]
     ```
 
 === "Limpieza"
 
     ```mermaid
-    graph TD
-        A[Leer tabla countries] --> B[Eliminar duplicados]
-        B --> C[Imputar nulos]
-        C --> D[Convertir poblacion y area]
-        D --> E[Guardar cleaning.xlsx y tabla]
-        E --> F[Generar reporte limpieza]
+    flowchart TD
+        A[Leer datos de countries en SQLite] --> B[Eliminar duplicados]
+        B --> C[Imputar valores nulos]
+        C --> D[Convertir tipos: poblacion y area]
+        D --> E[Guardar como cleaning.xlsx]
+        D --> F[Guardar en tabla countries_clean]
+        F --> G[Generar cleaning_report.txt]
     ```
 
 === "Enriquecimiento"
 
     ```mermaid
-    graph TD
-        A[Cargar cleaning.xlsx] --> B[Leer columna capital]
-        B --> C{Capital válida?}
-        C -- Sí --> D[Consultar API OpenCage]
-        D --> E[Añadir latitud y longitud]
-        E --> F[Guardar en enriched_data.xlsx y countries_enriched]
-        F --> G[Generar enriched_report.txt]
-        C -- No --> H[Omitir enriquecimiento]
+    flowchart TD
+        A[Inicio del Proceso] --> B[Cargar archivo cleaning.xlsx]
+        B --> C[Leer columna capital]
+        C --> D{¿Capital existe?}
+        D -- Sí --> E[Consultar API OpenCage por cada capital]
+        E --> F[Añadir latitud y longitud]
+        F --> G[Agregar columnas al DataFrame]
+        G --> H[Exportar a enriched_data.xlsx]
+        G --> I[Guardar en tabla countries_enriched de SQLite]
+        G --> J[Generar enriched_report.txt]
+        J --> K[Fin del proceso]
+        D -- No --> Z[Abortar enriquecimiento]
     ```
 
 === "Entidad-Relación"
@@ -117,13 +122,73 @@
         countries_clean ||--|| countries_enriched : enriquecimiento
     ```
 
+=== "Automatizacion"
+
+     ```mermaid
+     graph TD
+         A[push o cron] --> B[ingest_data]
+         B --> C[clean_data]
+         C --> D[enrich_data]
+         D --> E[generate_report]
+         E --> F[build_docs]
+    
+         subgraph Job: ingest_data
+             B1[Checkout code]
+             B2[Setup Python 3.9]
+             B3[Install dependencies]
+             B4[Run ingestion.py]
+             B5[Upload artifacts]
+             B1 --> B2 --> B3 --> B4 --> B5
+         end
+    
+         subgraph Job: clean_data
+             C1[Checkout code]
+             C2[Setup Python 3.9]
+             C3[Install pandas, openpyxl]
+             C4[Download ingestion-results]
+             C5[Run cleaning.py]
+             C6[Upload cleaning-results]
+             C1 --> C2 --> C3 --> C4 --> C5 --> C6
+         end
+    
+         subgraph Job: enrich_data
+             D1[Checkout code]
+             D2[Setup Python 3.9]
+             D3[Install requests, pandas, tqdm]
+             D4[Export API key]
+             D5[Run enrichment.py]
+             D6[Upload enrichment-results]
+             D1 --> D2 --> D3 --> D4 --> D5 --> D6
+         end
+    
+         subgraph Job: generate_report
+             E1[Checkout code]
+             E2[Setup Python 3.9]
+             E3[Run report.py]
+             E4[Upload report.md]
+             E1 --> E2 --> E3 --> E4
+         end
+    
+         subgraph Job: build_docs
+             F1[Checkout code]
+             F2[Setup Python 3.11]
+             F3[Install MkDocs plugins]
+             F4[Copiar archivos a docs/resultados]
+             F5[Ver plugins activos]
+             F6[mkdocs build]
+             F7[Deploy con GH Pages]
+             F8[Verificar contenido]
+             F1 --> F2 --> F3 --> F4 --> F5 --> F6 --> F7 --> F8
+         end
+     ```
+
 === "Resumen"
 
     ```mermaid
-    graph TD
+    flowchart TD
         A[Ingesta API RESTCountries] --> B[Guardar en SQLite y Excel]
         B --> C[Limpieza de Datos]
-        C --> D[Guardar en cleaning.xlsx y countries_clean]
-        D --> E[Enriquecimiento geográfico]
-        E --> F[Guardar en enriched_data.xlsx y countries_enriched]
+        C --> D[Guardar limpio en cleaning.xlsx y countries_clean]
+        D --> E[Enriquecimiento con OpenCage]
+        E --> F[Guardar enriquecido en enriched_data.xlsx y countries_enriched]
     ```
