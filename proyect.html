@@ -5,12 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://juanesmedcol.github.io/bigdata-infrastructure/structure_db.html" rel="canonical"/>
-<link href="enrichment.html" rel="prev"/>
-<link href="diagrams.html" rel="next"/>
+<link href="https://juanesmedcol.github.io/bigdata-infrastructure/proyect.html" rel="canonical"/>
+<link href="index.html" rel="prev"/>
+<link href="ingestion.html" rel="next"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.9" name="generator"/>
-<title>Base de Datos - Documentación del Proyecto Big Data</title>
+<title>Introducción - Documentación del Proyecto Big Data</title>
 <link href="assets/stylesheets/main.4af4bdda.min.css" rel="stylesheet"/>
 <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#estructura-de-la-base-de-datos-ingestiondb">
+<a class="md-skip" href="#documento-de-arquitectura-del-proyecto-integrador-de-big-data">
           Skip to content
         </a>
 </div>
@@ -56,7 +56,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Base de Datos
+              Introducción
             
           </span>
 </div>
@@ -174,13 +174,121 @@
             Documentación del Proyecto
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="proyect.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Introducción
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="proyect.html">
 <span class="md-ellipsis">
     Introducción
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#documento-de-arquitectura-del-proyecto-integrador-de-big-data">
+<span class="md-ellipsis">
+      📘 Documento de Arquitectura del Proyecto Integrador de Big Data
+    </span>
+</a>
+<nav aria-label="📘 Documento de Arquitectura del Proyecto Integrador de Big Data" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#1-introduccion-y-descripcion-global-de-la-arquitectura">
+<span class="md-ellipsis">
+      1. Introducción y Descripción Global de la Arquitectura
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#2-diagramas-de-flujo-y-arquitectura">
+<span class="md-ellipsis">
+      2. Diagramas de Flujo y Arquitectura
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#3-explicacion-detallada-de-componentes">
+<span class="md-ellipsis">
+      3. Explicación Detallada de Componentes
+    </span>
+</a>
+<nav aria-label="3. Explicación Detallada de Componentes" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#ingesta">
+<span class="md-ellipsis">
+      🔹 Ingesta
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#limpieza">
+<span class="md-ellipsis">
+      🔹 Limpieza
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#enriquecimiento">
+<span class="md-ellipsis">
+      🔹 Enriquecimiento
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#4-modelo-de-datos">
+<span class="md-ellipsis">
+      4. Modelo de Datos
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#5-justificacion-de-herramientas">
+<span class="md-ellipsis">
+      5. Justificación de Herramientas
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#6-simulacion-del-entorno-en-la-nube">
+<span class="md-ellipsis">
+      6. Simulación del Entorno en la Nube
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#7-flujo-de-datos-y-automatizacion">
+<span class="md-ellipsis">
+      7. Flujo de Datos y Automatización
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#8-conclusiones-y-recomendaciones">
+<span class="md-ellipsis">
+      8. Conclusiones y Recomendaciones
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="ingestion.html">
@@ -206,64 +314,13 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    Base de Datos
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="structure_db.html">
+<li class="md-nav__item">
+<a class="md-nav__link" href="structure_db.html">
 <span class="md-ellipsis">
     Base de Datos
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries-datos-crudos-desde-la-api-restcountries">
-<span class="md-ellipsis">
-      🔹 Tabla countries (datos crudos desde la API RESTCountries)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_clean-despues-de-limpieza">
-<span class="md-ellipsis">
-      🔹 Tabla countries_clean (después de limpieza)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_enriched-con-coordenadas-geograficas">
-<span class="md-ellipsis">
-      🔹 Tabla countries_enriched (con coordenadas geográficas)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-clases-y-flujo-de-proceso">
-<span class="md-ellipsis">
-      🧠 Diagrama de Clases y Flujo de Proceso
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-flujo-del-proceso">
-<span class="md-ellipsis">
-      🔄 Diagrama de Flujo del Proceso
-    </span>
-</a>
-</li>
-</ul>
-</nav>
 </li>
 </ul>
 </nav>
@@ -309,189 +366,92 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="estructura-de-la-base-de-datos-ingestiondb">🗃️ Estructura de la Base de Datos <code>ingestion.db</code><a class="headerlink" href="#estructura-de-la-base-de-datos-ingestiondb" title="Permanent link">¶</a></h1>
-<p>La base de datos contiene tres tablas principales que representan el flujo completo: desde los datos crudos hasta su versión enriquecida con coordenadas geográficas.</p>
+<h1>Introducción</h1>
+<h2 id="documento-de-arquitectura-del-proyecto-integrador-de-big-data">📘 Documento de Arquitectura del Proyecto Integrador de Big Data<a class="headerlink" href="#documento-de-arquitectura-del-proyecto-integrador-de-big-data" title="Permanent link">¶</a></h2>
+<h3 id="1-introduccion-y-descripcion-global-de-la-arquitectura">1. Introducción y Descripción Global de la Arquitectura<a class="headerlink" href="#1-introduccion-y-descripcion-global-de-la-arquitectura" title="Permanent link">¶</a></h3>
+<p>El proyecto integra tres fases principales en un entorno simulado de Big Data en la nube: <strong>ingesta</strong>, <strong>limpieza</strong> y <strong>enriquecimiento</strong> de datos. Utiliza <code>SQLite</code> como base de datos local simulando un almacén analítico, y <code>Python</code> como lenguaje principal para el procesamiento de datos. El flujo de trabajo se automatiza mediante <code>GitHub Actions</code> y se documenta con <code>MkDocs</code>.</p>
 <hr/>
-<h2 id="tabla-countries-datos-crudos-desde-la-api-restcountries">🔹 Tabla <code>countries</code> (datos crudos desde la API RESTCountries)<a class="headerlink" href="#tabla-countries-datos-crudos-desde-la-api-restcountries" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital del país</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región general (ej: Americas)</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión más específica</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Número de habitantes</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área total del país (km²)</td>
-</tr>
-</tbody>
-</table>
+<h3 id="2-diagramas-de-flujo-y-arquitectura">2. Diagramas de Flujo y Arquitectura<a class="headerlink" href="#2-diagramas-de-flujo-y-arquitectura" title="Permanent link">¶</a></h3>
+<p><strong>Diagrama 1: Flujo General del Proyecto</strong></p>
+<ul>
+<li>Desde la API pública <code>restcountries.com</code>, se extrae la información de países.</li>
+<li>Los datos son almacenados en SQLite (<code>countries</code>).</li>
+<li>Luego se realiza la limpieza y se guarda en <code>countries_clean</code>.</li>
+<li>Finalmente, se enriquecen con coordenadas geográficas usando la API de OpenCage y se guarda en <code>countries_enriched</code>.</li>
+</ul>
+<p><strong>Diagrama 2: Proceso de Enriquecimiento</strong></p>
+<ul>
+<li>Entrada: <code>cleaning.xlsx</code> → Proceso de geolocalización por capital → Salida: <code>enriched_data.xlsx</code> y <code>countries_enriched</code>.</li>
+</ul>
+<p>✅ <em>Puedo ayudarte a generar estos diagramas con base en esta estructura si lo deseas.</em></p>
 <hr/>
-<h2 id="tabla-countries_clean-despues-de-limpieza">🔹 Tabla <code>countries_clean</code> (después de limpieza)<a class="headerlink" href="#tabla-countries_clean-despues-de-limpieza" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país (limpio)</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital (rellenada si estaba vacía)</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Población con valores corregidos</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área con datos numéricos válidos</td>
-</tr>
-</tbody>
-</table>
+<h3 id="3-explicacion-detallada-de-componentes">3. Explicación Detallada de Componentes<a class="headerlink" href="#3-explicacion-detallada-de-componentes" title="Permanent link">¶</a></h3>
+<h4 id="ingesta">🔹 Ingesta<a class="headerlink" href="#ingesta" title="Permanent link">¶</a></h4>
+<p>-<strong>Fuente</strong>: API <code>https://restcountries.com/v3.1/all</code></p>
+<p>-<strong>Herramientas</strong>: <code>requests</code>, <code>pandas</code>, <code>sqlite3</code></p>
+<p>-<strong>Salida</strong>: <code>ingestion.db</code>, <code>ingestion.csv</code>, <code>ingestion.xlsx</code>, <code>ingestion_report.txt</code></p>
+<h4 id="limpieza">🔹 Limpieza<a class="headerlink" href="#limpieza" title="Permanent link">¶</a></h4>
+<ul>
+<li>Elimina duplicados y rellena nulos según el tipo de dato.</li>
+<li>Guarda resultados en <code>cleaning.xlsx</code> y tabla <code>countries_clean</code>.</li>
+</ul>
+<h4 id="enriquecimiento">🔹 Enriquecimiento<a class="headerlink" href="#enriquecimiento" title="Permanent link">¶</a></h4>
+<ul>
+<li>Uso de API <code>OpenCageData</code> para agregar latitud y longitud por capital.</li>
+<li>Resultado: tabla <code>countries_enriched</code> y Excel <code>enriched_data.xlsx</code>.</li>
+</ul>
 <hr/>
-<h2 id="tabla-countries_enriched-con-coordenadas-geograficas">🔹 Tabla <code>countries_enriched</code> (con coordenadas geográficas)<a class="headerlink" href="#tabla-countries_enriched-con-coordenadas-geograficas" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Población</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área (km²)</td>
-</tr>
-<tr>
-<td>latitud</td>
-<td>REAL</td>
-<td>Coordenada geográfica: latitud</td>
-</tr>
-<tr>
-<td>longitud</td>
-<td>REAL</td>
-<td>Coordenada geográfica: longitud</td>
-</tr>
-</tbody>
-</table>
+<h3 id="4-modelo-de-datos">4. Modelo de Datos<a class="headerlink" href="#4-modelo-de-datos" title="Permanent link">¶</a></h3>
+<p><strong>Tablas:</strong></p>
+<p>-<code>countries</code>: datos en crudo.</p>
+<p>-<code>countries_clean</code>: después de limpieza.</p>
+<p>-<code>countries_enriched</code>: con latitud y longitud.</p>
+<p><strong>Relaciones:</strong></p>
+<ul>
+<li>Todas las tablas comparten el campo clave <code>pais</code>.</li>
+</ul>
+<p>✅ <em>Te puedo generar un diagrama ER (Entidad-Relación) que muestre esta evolución de los datos.</em></p>
 <hr/>
-<h2 id="diagrama-de-clases-y-flujo-de-proceso">🧠 Diagrama de Clases y Flujo de Proceso<a class="headerlink" href="#diagrama-de-clases-y-flujo-de-proceso" title="Permanent link">¶</a></h2>
-<pre class="mermaid"><code>classDiagram
-    class Countries {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-    }
-
-    class CountriesClean {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-    }
-
-    class CountriesEnriched {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-        +REAL latitud
-        +REAL longitud
-    }
-
-    Countries --&gt; CountriesClean : Limpieza
-    CountriesClean --&gt; CountriesEnriched : Enriquecimiento</code></pre>
+<h3 id="5-justificacion-de-herramientas">5. Justificación de Herramientas<a class="headerlink" href="#5-justificacion-de-herramientas" title="Permanent link">¶</a></h3>
+<p>-<strong>SQLite</strong>: ligero, ideal para simulación local y consultas analíticas.</p>
+<p>-<strong>Pandas</strong>: procesamiento flexible y potente de datos.</p>
+<p>-<strong>Requests</strong>: extracción directa desde APIs REST.</p>
+<p>-<strong>GitHub Actions</strong>: permite automatización continua del flujo ETL.</p>
+<p>-<strong>MkDocs</strong>: ideal para documentación estructurada del proyecto.</p>
 <hr/>
-<h2 id="diagrama-de-flujo-del-proceso">🔄 Diagrama de Flujo del Proceso<a class="headerlink" href="#diagrama-de-flujo-del-proceso" title="Permanent link">¶</a></h2>
-<pre class="mermaid"><code>flowchart TD
-    A[Ingesta desde RESTCountries API] --&gt; B[Guardar en tabla countries]
-    B --&gt; C[Limpieza de datos]
-    C --&gt; D[Guardar en tabla countries_clean]
-    D --&gt; E[Consultar API OpenCage por capital]
-    E --&gt; F[Guardar coordenadas en countries_enriched]</code></pre>
+<h3 id="6-simulacion-del-entorno-en-la-nube">6. Simulación del Entorno en la Nube<a class="headerlink" href="#6-simulacion-del-entorno-en-la-nube" title="Permanent link">¶</a></h3>
+<p>Aunque no se ejecuta en una nube real como AWS o GCP, el entorno simulado replica sus fases:</p>
+<ul>
+<li>Almacenamiento en SQLite como si fuera un almacén analítico.</li>
+<li>Automatización y despliegue mediante GitHub Actions.</li>
+<li>Visualización estructurada con MkDocs como portal web de documentación.</li>
+</ul>
+<hr/>
+<h3 id="7-flujo-de-datos-y-automatizacion">7. Flujo de Datos y Automatización<a class="headerlink" href="#7-flujo-de-datos-y-automatizacion" title="Permanent link">¶</a></h3>
+<p>Desde <code>main.py</code> o <code>run.py</code>, puede ejecutarse el pipeline completo:</p>
+<p>1.<code>ingestion.py</code> → genera <code>countries</code></p>
+<p>2.<code>cleaning.py</code> → transforma en <code>countries_clean</code></p>
+<p>3.<code>enrichment.py</code> → finaliza en <code>countries_enriched</code></p>
+<p>Cada script genera reportes de auditoría para trazabilidad.</p>
+<hr/>
+<h3 id="8-conclusiones-y-recomendaciones">8. Conclusiones y Recomendaciones<a class="headerlink" href="#8-conclusiones-y-recomendaciones" title="Permanent link">¶</a></h3>
+<p><strong>Beneficios:</strong></p>
+<ul>
+<li>Flujo estructurado y automatizado.</li>
+<li>Datos enriquecidos para análisis geográfico.</li>
+<li>Documentación reproducible y clara.</li>
+</ul>
+<p><strong>Limitaciones:</strong></p>
+<ul>
+<li>No hay paralelización ni procesamiento distribuido (sin Spark en producción).</li>
+<li>Simulación local, no cloud-native real.</li>
+</ul>
+<p><strong>Recomendaciones:</strong></p>
+<ul>
+<li>Implementar el mismo flujo en AWS con S3 + Glue + Athena.</li>
+<li>Agregar validaciones más complejas.</li>
+<li>Considerar Spark para procesamiento a gran escala.</li>
+</ul>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

@@ -5,12 +5,12 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://juanesmedcol.github.io/bigdata-infrastructure/structure_db.html" rel="canonical"/>
-<link href="enrichment.html" rel="prev"/>
-<link href="diagrams.html" rel="next"/>
+<link href="https://juanesmedcol.github.io/bigdata-infrastructure/diagrams.html" rel="canonical"/>
+<link href="structure_db.html" rel="prev"/>
+<link href="report.html" rel="next"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.9" name="generator"/>
-<title>Base de Datos - Documentación del Proyecto Big Data</title>
+<title>Diagramas - Documentación del Proyecto Big Data</title>
 <link href="assets/stylesheets/main.4af4bdda.min.css" rel="stylesheet"/>
 <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#estructura-de-la-base-de-datos-ingestiondb">
+<a class="md-skip" href="#diagramas">
           Skip to content
         </a>
 </div>
@@ -56,7 +56,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Base de Datos
+              Diagramas
             
           </span>
 </div>
@@ -119,7 +119,7 @@
 
       </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
+<li class="md-tabs__item">
 <a class="md-tabs__link" href="proyect.html">
           
   
@@ -127,7 +127,7 @@
 
         </a>
 </li>
-<li class="md-tabs__item">
+<li class="md-tabs__item md-tabs__item--active">
 <a class="md-tabs__link" href="diagrams.html">
           
   
@@ -159,16 +159,16 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" id="__nav_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
 <span class="md-ellipsis">
     Documentación del Proyecto
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="true" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="false" aria-labelledby="__nav_2_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
             Documentación del Proyecto
@@ -206,85 +206,35 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-<span class="md-ellipsis">
-    Base de Datos
-    
-  </span>
-<span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="structure_db.html">
+<li class="md-nav__item">
+<a class="md-nav__link" href="structure_db.html">
 <span class="md-ellipsis">
     Base de Datos
     
   </span>
 </a>
-<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries-datos-crudos-desde-la-api-restcountries">
-<span class="md-ellipsis">
-      🔹 Tabla countries (datos crudos desde la API RESTCountries)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_clean-despues-de-limpieza">
-<span class="md-ellipsis">
-      🔹 Tabla countries_clean (después de limpieza)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_enriched-con-coordenadas-geograficas">
-<span class="md-ellipsis">
-      🔹 Tabla countries_enriched (con coordenadas geográficas)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-clases-y-flujo-de-proceso">
-<span class="md-ellipsis">
-      🧠 Diagrama de Clases y Flujo de Proceso
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-flujo-del-proceso">
-<span class="md-ellipsis">
-      🔄 Diagrama de Flujo del Proceso
-    </span>
-</a>
 </li>
 </ul>
 </nav>
 </li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
 <span class="md-ellipsis">
     Estructura del Proyecto
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
+<nav aria-expanded="true" aria-labelledby="__nav_3_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
             Estructura del Proyecto
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="diagrams.html">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="diagrams.html">
 <span class="md-ellipsis">
     Diagramas
     
@@ -309,189 +259,139 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="estructura-de-la-base-de-datos-ingestiondb">🗃️ Estructura de la Base de Datos <code>ingestion.db</code><a class="headerlink" href="#estructura-de-la-base-de-datos-ingestiondb" title="Permanent link">¶</a></h1>
-<p>La base de datos contiene tres tablas principales que representan el flujo completo: desde los datos crudos hasta su versión enriquecida con coordenadas geográficas.</p>
-<hr/>
-<h2 id="tabla-countries-datos-crudos-desde-la-api-restcountries">🔹 Tabla <code>countries</code> (datos crudos desde la API RESTCountries)<a class="headerlink" href="#tabla-countries-datos-crudos-desde-la-api-restcountries" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital del país</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región general (ej: Americas)</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión más específica</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Número de habitantes</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área total del país (km²)</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="tabla-countries_clean-despues-de-limpieza">🔹 Tabla <code>countries_clean</code> (después de limpieza)<a class="headerlink" href="#tabla-countries_clean-despues-de-limpieza" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país (limpio)</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital (rellenada si estaba vacía)</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Población con valores corregidos</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área con datos numéricos válidos</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="tabla-countries_enriched-con-coordenadas-geograficas">🔹 Tabla <code>countries_enriched</code> (con coordenadas geográficas)<a class="headerlink" href="#tabla-countries_enriched-con-coordenadas-geograficas" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>Campo</th>
-<th>Tipo</th>
-<th>Descripción</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pais</td>
-<td>TEXT</td>
-<td>Nombre común del país</td>
-</tr>
-<tr>
-<td>capital</td>
-<td>TEXT</td>
-<td>Capital</td>
-</tr>
-<tr>
-<td>region</td>
-<td>TEXT</td>
-<td>Región</td>
-</tr>
-<tr>
-<td>subregion</td>
-<td>TEXT</td>
-<td>Subregión</td>
-</tr>
-<tr>
-<td>poblacion</td>
-<td>INTEGER</td>
-<td>Población</td>
-</tr>
-<tr>
-<td>area</td>
-<td>REAL</td>
-<td>Área (km²)</td>
-</tr>
-<tr>
-<td>latitud</td>
-<td>REAL</td>
-<td>Coordenada geográfica: latitud</td>
-</tr>
-<tr>
-<td>longitud</td>
-<td>REAL</td>
-<td>Coordenada geográfica: longitud</td>
-</tr>
-</tbody>
-</table>
-<hr/>
-<h2 id="diagrama-de-clases-y-flujo-de-proceso">🧠 Diagrama de Clases y Flujo de Proceso<a class="headerlink" href="#diagrama-de-clases-y-flujo-de-proceso" title="Permanent link">¶</a></h2>
-<pre class="mermaid"><code>classDiagram
-    class Countries {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-    }
-
-    class CountriesClean {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-    }
-
-    class CountriesEnriched {
-        +TEXT pais
-        +TEXT capital
-        +TEXT region
-        +TEXT subregion
-        +INTEGER poblacion
-        +REAL area
-        +REAL latitud
-        +REAL longitud
-    }
-
-    Countries --&gt; CountriesClean : Limpieza
-    CountriesClean --&gt; CountriesEnriched : Enriquecimiento</code></pre>
-<hr/>
-<h2 id="diagrama-de-flujo-del-proceso">🔄 Diagrama de Flujo del Proceso<a class="headerlink" href="#diagrama-de-flujo-del-proceso" title="Permanent link">¶</a></h2>
+<h1 id="diagramas">Diagramas<a class="headerlink" href="#diagramas" title="Permanent link">¶</a></h1>
+<ol>
+<li><strong>Ingesta</strong>:</li>
+<li>Se conecta a la API pública de RESTCountries.</li>
+<li>Se guarda en SQLite (<code>countries</code>) y se exporta en formatos CSV y Excel.</li>
+<li>
+<p>Se genera un informe (<code>ingestion_report.txt</code>).</p>
+</li>
+<li>
+<p><strong>Limpieza</strong>:</p>
+</li>
+<li>Se eliminan duplicados.</li>
+<li>Se imputan nulos y se corrigen tipos de datos.</li>
+<li>
+<p>Se almacena el resultado limpio en <code>countries_clean</code> y Excel.</p>
+</li>
+<li>
+<p><strong>Enriquecimiento</strong>:</p>
+</li>
+<li>Usa la API de OpenCage para obtener coordenadas por capital.</li>
+<li>Añade columnas de latitud y longitud.</li>
+<li>
+<p>Se guarda como <code>countries_enriched</code> en SQLite y Excel.</p>
+</li>
+<li>
+<p><strong>Flujo Secuencial</strong>:</p>
+</li>
+<li>Cada fase depende de la anterior.</li>
+<li>Los reportes permiten trazabilidad del estado de los datos.</li>
+</ol>
+<div class="tabbed-set" data-tabs="1:1"><input checked="checked" id="general" name="__tabbed_1" type="radio"><label for="general">General</label><div class="tabbed-content"></div>
+</input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[Ingesta desde RESTCountries API] --&gt; B[Guardar en tabla countries]
-    B --&gt; C[Limpieza de datos]
-    C --&gt; D[Guardar en tabla countries_clean]
-    D --&gt; E[Consultar API OpenCage por capital]
-    E --&gt; F[Guardar coordenadas en countries_enriched]</code></pre>
+    subgraph IN[🔹 Fase 1: Ingesta de Datos]
+        A1[🌐 Consulta API RESTCountries]
+        A2[📊 Extracción de atributos: país, capital, región, subregión, población, área]
+        A3[🗃️ Guardar en tabla SQLite: countries]
+        A4[📄 Exportar a Excel y CSV]
+        A5[📝 Generar reporte de auditoría]
+        A1 --&gt; A2 --&gt; A3 --&gt; A4 --&gt; A5
+    end
+
+    subgraph CL[🔹 Fase 2: Limpieza de Datos]
+        B1[📥 Leer datos de tabla countries]
+        B2[❌ Eliminar duplicados]
+        B3[🧼 Imputar nulos (media para números, ffill para texto)]
+        B4[🔢 Conversión de tipos: población y área]
+        B5[💾 Guardar en tabla countries_clean y cleaning.xlsx]
+        B6[📝 Generar cleaning_report.txt]
+        B1 --&gt; B2 --&gt; B3 --&gt; B4 --&gt; B5 --&gt; B6
+    end
+
+    subgraph EN[🔹 Fase 3: Enriquecimiento Geográfico]
+        C1[📥 Leer cleaning.xlsx]
+        C2[🔎 Extraer columna capital]
+        C3{¿Capital válida?}
+        C4[🌍 Consultar API OpenCage (1s por consulta)]
+        C5[➕ Añadir latitud y longitud]
+        C6[💾 Guardar en countries_enriched y enriched_data.xlsx]
+        C7[📝 Generar enriched_report.txt]
+        C3 -- Sí --&gt; C4 --&gt; C5 --&gt; C6 --&gt; C7
+        C3 -- No --&gt; Z[⚠️ Omitir registro]
+        C1 --&gt; C2 --&gt; C3
+    end
+
+    IN --&gt; CL --&gt; EN</code></pre>
+<div class="tabbed-set" data-tabs="2:1"><input checked="checked" id="ingesta" name="__tabbed_2" type="radio"><label for="ingesta">Ingesta</label><div class="tabbed-content"></div>
+</input></div>
+<pre class="mermaid"><code>flowchart TD
+    A[🌐 Solicitar datos a RESTCountries API] --&gt; B[📊 Extraer campos clave]
+    B --&gt; C[📥 Guardar en ingestion.csv e ingestion.xlsx]
+    C --&gt; D[🗃️ Insertar en tabla countries de SQLite]
+    D --&gt; E[📝 Generar ingestion_report.txt]</code></pre>
+<div class="tabbed-set" data-tabs="3:1"><input checked="checked" id="limpieza" name="__tabbed_3" type="radio"><label for="limpieza">Limpieza</label><div class="tabbed-content"></div>
+</input></div>
+<pre class="mermaid"><code>flowchart TD
+    A[🔍 Leer datos de tabla countries] --&gt; B[❌ Eliminar duplicados]
+    B --&gt; C[🧪 Imputar valores nulos (media, ffill)]
+    C --&gt; D[🔢 Convertir tipos: poblacion y area]
+    D --&gt; E[💾 Guardar en cleaning.xlsx y tabla countries_clean]
+    E --&gt; F[📝 Generar cleaning_report.txt]</code></pre>
+<div class="tabbed-set" data-tabs="4:1"><input checked="checked" id="enriquecimiento" name="__tabbed_4" type="radio"><label for="enriquecimiento">Enriquecimiento</label><div class="tabbed-content"></div>
+</input></div>
+<pre class="mermaid"><code>flowchart TD
+    A[📥 Cargar cleaning.xlsx] --&gt; B[🔎 Leer columna capital]
+    B --&gt; C{¿Capital válida?}
+    C -- Sí --&gt; D[🌐 Consultar API OpenCage]
+    D --&gt; E[🧭 Añadir latitud y longitud]
+    E --&gt; F[💾 Guardar en enriched_data.xlsx y countries_enriched]
+    F --&gt; G[📝 Generar enriched_report.txt]
+    C -- No --&gt; H[⚠️ Omitir enriquecimiento]</code></pre>
+<div class="tabbed-set" data-tabs="5:1"><input checked="checked" id="entidad-relación" name="__tabbed_5" type="radio"><label for="entidad-relación">Entidad-Relación</label><div class="tabbed-content"></div>
+</input></div>
+<pre class="mermaid"><code>erDiagram
+    countries {
+        TEXT pais
+        TEXT capital
+        TEXT region
+        TEXT subregion
+        INTEGER poblacion
+        REAL area
+    }
+
+    countries_clean {
+        TEXT pais
+        TEXT capital
+        TEXT region
+        TEXT subregion
+        INTEGER poblacion
+        REAL area
+    }
+
+    countries_enriched {
+        TEXT pais
+        TEXT capital
+        TEXT region
+        TEXT subregion
+        INTEGER poblacion
+        REAL area
+        REAL latitud
+        REAL longitud
+    }
+
+    countries ||--|| countries_clean : limpieza
+    countries_clean ||--|| countries_enriched : enriquecimiento</code></pre>
+<div class="tabbed-set" data-tabs="6:1"><input checked="checked" id="resumen" name="__tabbed_6" type="radio"><label for="resumen">Resumen</label><div class="tabbed-content"></div>
+</input></div>
+<pre class="mermaid"><code>flowchart TD
+    A[🌍 Ingesta API RESTCountries] --&gt; B[🗃️ Guardar en SQLite (countries) y Excel]
+    B --&gt; C[🧼 Limpieza de Datos (dropna, ffill, mean)]
+    C --&gt; D[🗃️ Guardar limpio en cleaning.xlsx y countries_clean]
+    D --&gt; E[🌍 Enriquecimiento con coordenadas]
+    E --&gt; F[🗃️ Guardar en enriched_data.xlsx y countries_enriched]</code></pre>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
