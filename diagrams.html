@@ -272,7 +272,7 @@
 <li>Los reportes permiten trazabilidad del estado de los datos.</li>
 </ol>
 <hr/>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:6"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">General</label><label for="__tabbed_1_2">Ingesta</label><label for="__tabbed_1_3">Limpieza</label><label for="__tabbed_1_4">Enriquecimiento</label><label for="__tabbed_1_5">Entidad-Relación</label><label for="__tabbed_1_6">Resumen</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:7"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><input id="__tabbed_1_6" name="__tabbed_1" type="radio"><input id="__tabbed_1_7" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">General</label><label for="__tabbed_1_2">Ingesta</label><label for="__tabbed_1_3">Limpieza</label><label for="__tabbed_1_4">Enriquecimiento</label><label for="__tabbed_1_5">Entidad-Relación</label><label for="__tabbed_1_6">Automatizacion</label><label for="__tabbed_1_7">Resumen</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
@@ -298,29 +298,34 @@
     C3 -- No --&gt; CZ[Omitir registro]</code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="mermaid"><code>graph TD
-    A[Solicitar API RESTCountries] --&gt; B[Extraer campos]
-    B --&gt; C[Guardar CSV y Excel]
-    C --&gt; D[Insertar en SQLite]
-    D --&gt; E[Generar reporte ingesta]</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    A[Solicitar datos de API RESTCountries] --&gt; B[Extraer atributos clave]
+    B --&gt; C[Guardar en archivo CSV y Excel]
+    C --&gt; D[Guardar en tabla countries de SQLite]
+    D --&gt; E[Generar archivo de auditoría]</code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="mermaid"><code>graph TD
-    A[Leer tabla countries] --&gt; B[Eliminar duplicados]
-    B --&gt; C[Imputar nulos]
-    C --&gt; D[Convertir poblacion y area]
-    D --&gt; E[Guardar cleaning.xlsx y tabla]
-    E --&gt; F[Generar reporte limpieza]</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    A[Leer datos de countries en SQLite] --&gt; B[Eliminar duplicados]
+    B --&gt; C[Imputar valores nulos]
+    C --&gt; D[Convertir tipos: poblacion y area]
+    D --&gt; E[Guardar como cleaning.xlsx]
+    D --&gt; F[Guardar en tabla countries_clean]
+    F --&gt; G[Generar cleaning_report.txt]</code></pre>
 </div>
 <div class="tabbed-block">
-<pre class="mermaid"><code>graph TD
-    A[Cargar cleaning.xlsx] --&gt; B[Leer columna capital]
-    B --&gt; C{Capital válida?}
-    C -- Sí --&gt; D[Consultar API OpenCage]
-    D --&gt; E[Añadir latitud y longitud]
-    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]
-    F --&gt; G[Generar enriched_report.txt]
-    C -- No --&gt; H[Omitir enriquecimiento]</code></pre>
+<pre class="mermaid"><code>flowchart TD
+    A[Inicio del Proceso] --&gt; B[Cargar archivo cleaning.xlsx]
+    B --&gt; C[Leer columna capital]
+    C --&gt; D{¿Capital existe?}
+    D -- Sí --&gt; E[Consultar API OpenCage por cada capital]
+    E --&gt; F[Añadir latitud y longitud]
+    F --&gt; G[Agregar columnas al DataFrame]
+    G --&gt; H[Exportar a enriched_data.xlsx]
+    G --&gt; I[Guardar en tabla countries_enriched de SQLite]
+    G --&gt; J[Generar enriched_report.txt]
+    J --&gt; K[Fin del proceso]
+    D -- No --&gt; Z[Abortar enriquecimiento]</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="mermaid"><code>erDiagram
@@ -358,14 +363,71 @@
 </div>
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
+    A[push o cron] --&gt; B[ingest_data]
+    B --&gt; C[clean_data]
+    C --&gt; D[enrich_data]
+    D --&gt; E[generate_report]
+    E --&gt; F[build_docs]
+
+    subgraph Job: ingest_data
+        B1[Checkout code]
+        B2[Setup Python 3.9]
+        B3[Install dependencies]
+        B4[Run ingestion.py]
+        B5[Upload artifacts]
+        B1 --&gt; B2 --&gt; B3 --&gt; B4 --&gt; B5
+    end
+
+    subgraph Job: clean_data
+        C1[Checkout code]
+        C2[Setup Python 3.9]
+        C3[Install pandas, openpyxl]
+        C4[Download ingestion-results]
+        C5[Run cleaning.py]
+        C6[Upload cleaning-results]
+        C1 --&gt; C2 --&gt; C3 --&gt; C4 --&gt; C5 --&gt; C6
+    end
+
+    subgraph Job: enrich_data
+        D1[Checkout code]
+        D2[Setup Python 3.9]
+        D3[Install requests, pandas, tqdm]
+        D4[Export API key]
+        D5[Run enrichment.py]
+        D6[Upload enrichment-results]
+        D1 --&gt; D2 --&gt; D3 --&gt; D4 --&gt; D5 --&gt; D6
+    end
+
+    subgraph Job: generate_report
+        E1[Checkout code]
+        E2[Setup Python 3.9]
+        E3[Run report.py]
+        E4[Upload report.md]
+        E1 --&gt; E2 --&gt; E3 --&gt; E4
+    end
+
+    subgraph Job: build_docs
+        F1[Checkout code]
+        F2[Setup Python 3.11]
+        F3[Install MkDocs plugins]
+        F4[Copiar archivos a docs/resultados]
+        F5[Ver plugins activos]
+        F6[mkdocs build]
+        F7[Deploy con GH Pages]
+        F8[Verificar contenido]
+        F1 --&gt; F2 --&gt; F3 --&gt; F4 --&gt; F5 --&gt; F6 --&gt; F7 --&gt; F8
+    end</code></pre>
+</div>
+<div class="tabbed-block">
+<pre class="mermaid"><code>flowchart TD
     A[Ingesta API RESTCountries] --&gt; B[Guardar en SQLite y Excel]
     B --&gt; C[Limpieza de Datos]
-    C --&gt; D[Guardar en cleaning.xlsx y countries_clean]
-    D --&gt; E[Enriquecimiento geográfico]
-    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]</code></pre>
+    C --&gt; D[Guardar limpio en cleaning.xlsx y countries_clean]
+    D --&gt; E[Enriquecimiento con OpenCage]
+    E --&gt; F[Guardar enriquecido en enriched_data.xlsx y countries_enriched]</code></pre>
 </div>
 </div>
-</input></input></input></input></input></input></div>
+</input></input></input></input></input></input></input></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>

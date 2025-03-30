@@ -220,37 +220,16 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries-datos-crudos-desde-la-api-restcountries">
+<a class="md-nav__link" href="#tablas">
 <span class="md-ellipsis">
-      🔹 Tabla countries (datos crudos desde la API RESTCountries)
+      🔹 Tablas
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_clean-despues-de-limpieza">
+<a class="md-nav__link" href="#diagramas">
 <span class="md-ellipsis">
-      🔹 Tabla countries_clean (después de limpieza)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#tabla-countries_enriched-con-coordenadas-geograficas">
-<span class="md-ellipsis">
-      🔹 Tabla countries_enriched (con coordenadas geográficas)
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-clases-y-flujo-de-proceso">
-<span class="md-ellipsis">
-      🧠 Diagrama de Clases y Flujo de Proceso
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-de-flujo-del-proceso">
-<span class="md-ellipsis">
-      🔄 Diagrama de Flujo del Proceso
+      Diagramas
     </span>
 </a>
 </li>
@@ -294,7 +273,11 @@
 <h1 id="estructura-de-la-base-de-datos-ingestiondb">🗃️ Estructura de la Base de Datos <code>ingestion.db</code><a class="headerlink" href="#estructura-de-la-base-de-datos-ingestiondb" title="Permanent link">¶</a></h1>
 <p>La base de datos contiene tres tablas principales que representan el flujo completo: desde los datos crudos hasta su versión enriquecida con coordenadas geográficas.</p>
 <hr/>
-<h2 id="tabla-countries-datos-crudos-desde-la-api-restcountries">🔹 Tabla <code>countries</code> (datos crudos desde la API RESTCountries)<a class="headerlink" href="#tabla-countries-datos-crudos-desde-la-api-restcountries" title="Permanent link">¶</a></h2>
+<h2 id="tablas">🔹 Tablas<a class="headerlink" href="#tablas" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Ingestion</label><label for="__tabbed_1_2">Limpieza</label><label for="__tabbed_1_3">Enriquecimiento</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Tabla <code>countries</code> (datos crudos desde la API RESTCountries)</p>
 <table>
 <thead>
 <tr>
@@ -336,8 +319,9 @@
 </tr>
 </tbody>
 </table>
-<hr/>
-<h2 id="tabla-countries_clean-despues-de-limpieza">🔹 Tabla <code>countries_clean</code> (después de limpieza)<a class="headerlink" href="#tabla-countries_clean-despues-de-limpieza" title="Permanent link">¶</a></h2>
+</div>
+<div class="tabbed-block">
+<p>Tabla <code>countries_clean</code> (después de limpieza)</p>
 <table>
 <thead>
 <tr>
@@ -379,8 +363,9 @@
 </tr>
 </tbody>
 </table>
-<hr/>
-<h2 id="tabla-countries_enriched-con-coordenadas-geograficas">🔹 Tabla <code>countries_enriched</code> (con coordenadas geográficas)<a class="headerlink" href="#tabla-countries_enriched-con-coordenadas-geograficas" title="Permanent link">¶</a></h2>
+</div>
+<div class="tabbed-block">
+<p>Tabla <code>countries_enriched</code> (con coordenadas geográficas)</p>
 <table>
 <thead>
 <tr>
@@ -432,8 +417,14 @@
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</input></input></input></div>
 <hr/>
-<h2 id="diagrama-de-clases-y-flujo-de-proceso">🧠 Diagrama de Clases y Flujo de Proceso<a class="headerlink" href="#diagrama-de-clases-y-flujo-de-proceso" title="Permanent link">¶</a></h2>
+<h2 id="diagramas">Diagramas<a class="headerlink" href="#diagramas" title="Permanent link">¶</a></h2>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">🧠 Clases y Flujo de Proceso</label><label for="__tabbed_2_2">🔄 Flujo del Proceso</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <pre class="mermaid"><code>classDiagram
     class Countries {
         +TEXT pais
@@ -466,14 +457,17 @@
 
     Countries --&gt; CountriesClean : Limpieza
     CountriesClean --&gt; CountriesEnriched : Enriquecimiento</code></pre>
-<hr/>
-<h2 id="diagrama-de-flujo-del-proceso">🔄 Diagrama de Flujo del Proceso<a class="headerlink" href="#diagrama-de-flujo-del-proceso" title="Permanent link">¶</a></h2>
+</div>
+<div class="tabbed-block">
 <pre class="mermaid"><code>flowchart TD
     A[Ingesta desde RESTCountries API] --&gt; B[Guardar en tabla countries]
     B --&gt; C[Limpieza de datos]
     C --&gt; D[Guardar en tabla countries_clean]
     D --&gt; E[Consultar API OpenCage por capital]
     E --&gt; F[Guardar coordenadas en countries_enriched]</code></pre>
+</div>
+</div>
+</input></input></div>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
