@@ -1,3 +1,4 @@
+import pandas as pd
 from pathlib import Path
 
 # Leer las últimas auditorías de cada proceso desde sus archivos .txt
@@ -24,11 +25,31 @@ for proceso, contenido in auditorias.items():
     auditoria_md += f"## 🔹 {proceso}\n\n"
     auditoria_md += f"```\n{contenido}\n```\n\n"
 
+# Agregar vista previa de la tabla enriquecida
+excel_path = Path("src/static/xlsx/enriched_data.xlsx")
+
+if excel_path.exists():
+    df = pd.read_excel(excel_path)
+    preview_table = df.head(250).to_markdown(index=False, tablefmt="github")
+else:
+    preview_table = "⚠️ No se encontró el archivo enriched_data.xlsx."
+
+preview_section = "## 🔍 Vista Previa de la Tabla Enriquecida\n\n"
+preview_section += "A continuación se muestra una vista previa de los primeros registros del dataset enriquecido:\n\n"
+preview_section += f"\n{preview_table}\n\n"
+
+# Combinar todo
+full_report = auditoria_md.strip() + "\n\n" + preview_section.strip()
+
 # Crear carpeta docs si no existe
-Path("docs").mkdir(parents=True, exist_ok=True)
+report_path = Path("docs/report.md")
+report_path.parent.mkdir(parents=True, exist_ok=True)
 
 # Guardar como archivo markdown
-auditoria_md_path = Path("docs/report.md")
-auditoria_md_path.write_text(auditoria_md.strip(), encoding="utf-8")
+report_path.write_text(full_report, encoding="utf-8")
 
-print(f"✅ Informe generado en: {auditoria_md_path}")
+# Copiar para descarga
+output_path = Path("docs/report.md")
+output_path.write_text(full_report, encoding="utf-8")
+
+output_path
