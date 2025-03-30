@@ -1,0 +1,5 @@
+📋 **Informe de Enriquecimiento de Datos**
+
+🔢 Registros base: 100
+
+🔢 Registros finales: 100
