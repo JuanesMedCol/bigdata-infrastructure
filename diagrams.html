@@ -6,7 +6,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <link href="https://juanesmedcol.github.io/bigdata-infrastructure/diagrams.html" rel="canonical"/>
-<link href="structure_db.html" rel="prev"/>
+<link href="automation.html" rel="prev"/>
 <link href="report.html" rel="next"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.9" name="generator"/>
@@ -32,7 +32,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#diagramas">
+<a class="md-skip" href="#diagramas-del-proyecto">
           Skip to content
         </a>
 </div>
@@ -206,6 +206,14 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="automation.html">
+<span class="md-ellipsis">
+    Automatización
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <a class="md-nav__link md-nav__link--active" href="diagrams.html">
@@ -233,40 +241,37 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1 id="diagramas">Diagramas<a class="headerlink" href="#diagramas" title="Permanent link">¶</a></h1>
+<h1 id="diagramas-del-proyecto">📊 Diagramas del Proyecto<a class="headerlink" href="#diagramas-del-proyecto" title="Permanent link">¶</a></h1>
 <ol>
-<li>
-<p><strong>Ingesta</strong>:</p>
-</li>
-<li>
-<p>Se conecta a la API pública de RESTCountries.</p>
-</li>
+<li><strong>Ingesta</strong>:</li>
+<li>Se conecta a la API pública de RESTCountries.</li>
 <li>Se guarda en SQLite (<code>countries</code>) y se exporta en formatos CSV y Excel.</li>
-<li>Se genera un informe (<code>ingestion_report.txt</code>).</li>
+<li>
+<p>Se genera un informe (<code>ingestion_report.txt</code>).</p>
+</li>
 <li>
 <p><strong>Limpieza</strong>:</p>
 </li>
-<li>
-<p>Se eliminan duplicados.</p>
-</li>
+<li>Se eliminan duplicados.</li>
 <li>Se imputan nulos y se corrigen tipos de datos.</li>
-<li>Se almacena el resultado limpio en <code>countries_clean</code> y Excel.</li>
+<li>
+<p>Se almacena el resultado limpio en <code>countries_clean</code> y Excel.</p>
+</li>
 <li>
 <p><strong>Enriquecimiento</strong>:</p>
 </li>
-<li>
-<p>Usa la API de OpenCage para obtener coordenadas por capital.</p>
-</li>
+<li>Usa la API de OpenCage para obtener coordenadas por capital.</li>
 <li>Añade columnas de latitud y longitud.</li>
-<li>Se guarda como <code>countries_enriched</code> en SQLite y Excel.</li>
+<li>
+<p>Se guarda como <code>countries_enriched</code> en SQLite y Excel.</p>
+</li>
 <li>
 <p><strong>Flujo Secuencial</strong>:</p>
 </li>
-<li>
-<p>Cada fase depende de la anterior.</p>
-</li>
+<li>Cada fase depende de la anterior.</li>
 <li>Los reportes permiten trazabilidad del estado de los datos.</li>
 </ol>
+<hr/>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">General</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
@@ -299,36 +304,34 @@
 </div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[Leer datos de tabla countries] --&gt; B[Eliminar duplicados]
-    B --&gt; C[Imputar valores nulos (media, ffill)]
-    C --&gt; D[Convertir tipos: poblacion y area]
-    D --&gt; E[Guardar en cleaning.xlsx y countries_clean]
-    E --&gt; F[Generar cleaning_report.txt]
-</code></pre>
+    A[Solicitar datos de API RESTCountries] --&gt; B[Extraer atributos clave]
+    B --&gt; C[Guardar en CSV y Excel]
+    C --&gt; D[Insertar en tabla countries (SQLite)]
+    D --&gt; E[Generar ingestion_report.txt]</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Limpieza</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[🔍 Leer datos de tabla countries] --&gt; B[❌ Eliminar duplicados]
-    B --&gt; C[🧪 Imputar valores nulos (media, ffill)]
-    C --&gt; D[🔢 Convertir tipos: poblacion y area]
-    D --&gt; E[💾 Guardar en cleaning.xlsx y tabla countries_clean]
-    E --&gt; F[📝 Generar cleaning_report.txt]</code></pre>
+    A[Leer datos de tabla countries] --&gt; B[Eliminar duplicados]
+    B --&gt; C[Imputar valores nulos (media, ffill)]
+    C --&gt; D[Convertir tipos: poblacion y area]
+    D --&gt; E[Guardar en cleaning.xlsx y countries_clean]
+    E --&gt; F[Generar cleaning_report.txt]</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:1"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Enriquecimiento</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
 </div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[📥 Cargar cleaning.xlsx] --&gt; B[🔎 Leer columna capital]
+    A[Cargar cleaning.xlsx] --&gt; B[Leer columna capital]
     B --&gt; C{¿Capital válida?}
-    C -- Sí --&gt; D[🌐 Consultar API OpenCage]
-    D --&gt; E[🧭 Añadir latitud y longitud]
-    E --&gt; F[💾 Guardar en enriched_data.xlsx y countries_enriched]
-    F --&gt; G[📝 Generar enriched_report.txt]
-    C -- No --&gt; H[⚠️ Omitir enriquecimiento]</code></pre>
+    C -- Sí --&gt; D[Consultar API OpenCage]
+    D --&gt; E[Añadir latitud y longitud]
+    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]
+    F --&gt; G[Generar enriched_report.txt]
+    C -- No --&gt; H[Omitir enriquecimiento]</code></pre>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:1"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Entidad-Relación</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block"></div>
@@ -372,12 +375,11 @@
 </div>
 </input></div>
 <pre class="mermaid"><code>flowchart TD
-    A[Ingesta desde API RESTCountries] --&gt; B[Guardar en SQLite (countries) y Excel]
-    B --&gt; C[Limpieza de Datos (dropna, ffill, mean)]
-    C --&gt; D[Guardar limpio en cleaning.xlsx y countries_clean]
-    D --&gt; E[Enriquecimiento con coordenadas]
-    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]
-</code></pre>
+    A[Ingesta API RESTCountries] --&gt; B[Guardar en SQLite y Excel]
+    B --&gt; C[Limpieza de Datos]
+    C --&gt; D[Guardar en cleaning.xlsx y countries_clean]
+    D --&gt; E[Enriquecimiento geográfico]
+    E --&gt; F[Guardar en enriched_data.xlsx y countries_enriched]</code></pre>
 </article>
 </div>
 <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
