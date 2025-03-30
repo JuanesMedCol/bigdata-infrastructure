@@ -34,8 +34,9 @@ theme:
 
 nav:
   - Inicio: index.md
-  - Ingesta de Datos: ingesta.md
-  - Limpieza de Datos: limpieza.md
+  - Ingesta de Datos: ingestion.md
+  - Limpieza de Datos: cleaning.md
+  - Enriquecimiento de Datos: enrichment.md
 
 markdown_extensions:
   - tables

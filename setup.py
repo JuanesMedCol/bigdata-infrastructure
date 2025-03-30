@@ -10,6 +10,7 @@ setup(
         "openpyxl",
         "pyspark",
         "requests",
+        "tqdm",
         "mkdocs",
         "mkdocs-material",
         "mkdocs-mermaid2-plugin",

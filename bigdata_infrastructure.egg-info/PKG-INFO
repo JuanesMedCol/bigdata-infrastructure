@@ -16,9 +16,11 @@ Requires-Dist: numpy
 Requires-Dist: openpyxl
 Requires-Dist: pyspark
 Requires-Dist: requests
+Requires-Dist: tqdm
 Requires-Dist: mkdocs
 Requires-Dist: mkdocs-material
 Requires-Dist: mkdocs-mermaid2-plugin
+Requires-Dist: mkdocs-glightbox
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier

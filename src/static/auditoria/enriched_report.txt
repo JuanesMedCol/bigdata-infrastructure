@@ -1,5 +1,5 @@
 📋 **Informe de Enriquecimiento de Datos**
 
-🔢 Registros base: 100
-
-🔢 Registros finales: 100
+🔢 Registros base: 250
+🌍 Enriquecimiento con coordenadas geográficas aplicado.
+🔢 Registros finales: 250

@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 SRC_DIR = os.path.join(BASE_DIR, 'src')
 
 # Scripts a ejecutar en orden
-scripts = ['ingestion.py', 'cleaning.py']
+scripts = ['ingestion.py', 'cleaning.py', 'enrichment.py']
 
 for script in scripts:
     script_path = os.path.join(SRC_DIR, script)

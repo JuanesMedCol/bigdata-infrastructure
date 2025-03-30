@@ -1,83 +1,68 @@
-# Proyecto Integrador de Infraestructura y Arquitectura para Big Data
+# 🌐 Proyecto de Ingesta, Limpieza y Enriquecimiento de Datos Globales
 
-Este proyecto está diseñado para realizar la **ingesta** de datos desde una API pública, almacenarlos en una base de datos SQLite y permitir su posterior **limpieza y análisis** mediante scripts automatizados en Python.
-
-## 🚀 **Descripción**
-
-Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts), que es un servicio de pruebas para desarrolladores. Los datos extraídos se almacenan en una base de datos SQLite local, permitiendo su análisis, limpieza y manipulación posterior.
-
-### [Revisa la documentacion del proyecto](https://juanesmedcol.github.io/bigdata-infrastructure/)
-
-### 🔥 **Funcionalidades:**
-
-✅ Realiza una solicitud `GET` a la API para obtener datos.
-
-✅ Almacena los datos en una base de datos SQLite.
-
-✅ Evita duplicados en la base de datos mediante restricciones únicas.
-
-✅ Exporta los datos a formatos **CSV** y **Excel** para su análisis.
-
-✅ Limpia los datos, manejando valores nulos y datos duplicados.
-
-✅ Genera un informe de auditoría detallado con el estado de los datos.
+Este proyecto implementa una arquitectura de procesamiento de datos basada en Python, orientada al tratamiento de datos globales sobre países del mundo. Los datos son recolectados desde la API pública [RESTCountries](https://restcountries.com/v3.1/all) y enriquecidos con coordenadas geográficas utilizando la API de [OpenCage](https://opencagedata.com/).
 
 ---
 
-## 📂 **Estructura del Proyecto**
+<p style="text-align:center;"><h2><a href="https://juanesmedcol.github.io/bigdata-infrastructure/"></a></h2></p>
 
-```
-[bigdata-infrastructure]
-│   .gitattributes
-│   .gitignore
-│   mkdocs.yml
-│   README.md
-│   requirements.txt
-│   run.py
-│   setup.py
-│
-├───.github
-│   └───workflows
-│           bigdata.yml
-│
-├───.qodo
-│       history.sqlite
-│
-├───bigdata_infrastructure.egg-info
-│       dependency_links.txt
-│       PKG-INFO
-│       requires.txt
-│       SOURCES.txt
-│       top_level.txt
-│
-├───build
-│   └───bdist.win-amd64
-├───docs
-│       index.md
-│       ingesta.md
-│       limpieza.md
-│
-└───src
-    │   cleaning.py
-    │   ingestion.py
-    │
-    └───static
-        ├───auditoria
-        │       cleaning_report.txt
-        │       ingestion_report.txt
-        │
-        ├───csv
-        │       ingestion.csv
-        │
-        ├───db
-        │       ingestion.db
-        │
-        └───xlsx
-                cleaning.xlsx
-                ingestion.xlsx
+---
+
+## 🚀 Flujo de Trabajo
+
+```mermaid
+flowchart TD
+    A[Ingesta API RESTCountries] --> B[Guardar en SQLite, CSV y Excel]
+    B --> C[Limpieza de Datos]
+    C --> D[Guardar limpio en cleaning.xlsx y countries_clean]
+    D --> E[Enriquecimiento con OpenCage]
+    E --> F[Guardar enriquecido en enriched_data.xlsx y countries_enriched]
+    F --> G[Generar informes de auditoría]
 ```
 
 ---
+
+## 🧩 Componentes del Proyecto
+
+| Script            | Descripción                                                                   |
+| ----------------- | ------------------------------------------------------------------------------ |
+| `ingestion.py`  | Solicita datos a la API de RESTCountries y los almacena en SQLite, Excel y CSV |
+| `cleaning.py`   | Limpia datos (nulos, duplicados, tipos) y exporta a Excel y SQLite             |
+| `enrichment.py` | Enriquecer con coordenadas geográficas usando la API de OpenCage              |
+| `run.py`        | Ejecuta todo el flujo desde `src/` con control de estado                     |
+
+---
+
+## 📁 Estructura del Proyecto
+
+```
+.
+├── run.py
+├── requirements.txt
+├── README.md
+├── src/
+│   ├── ingestion.py
+│   ├── cleaning.py
+│   ├── enrichment.py
+│   └── static/
+│       ├── db/
+│       │   └── ingestion.db
+│       ├── csv/
+│       │   └── ingestion.csv
+│       ├── xlsx/
+│       │   ├── ingestion.xlsx
+│       │   ├── cleaning.xlsx
+│       │   └── enriched_data.xlsx
+│       └── auditoria/
+│           ├── ingestion_report.txt
+│           ├── cleaning_report.txt
+│           └── enriched_report.txt
+└── docs/
+    ├── index.md
+    ├── ingestion.md
+    ├── cleaning.md
+    └── enrichment.md
+```
 
 ## 🛠️ **Requisitos**
 
@@ -103,106 +88,25 @@ git clone https://github.com/JuanesMedCol/bigdata-infrastructure.git
 cd bigdata-infrastructure
 ```
 
-3. Instala las dependencias desde el archivo `requirements.txt` o usando el setup:
+3. Instala las dependencias con cualqquiera de las siguientes formas:
 
 ```bash
 Opcion 1: pip install -r requirements.txt
 Opcion 2: pip install .
+
+
+---
+
+## 📦 Archivos Generados
+
+- `ingestion.xlsx`, `cleaning.xlsx`, `enriched_data.xlsx`
+- `ingestion.db` con las tablas: `countries`, `countries_clean`, `countries_enriched`
+- Archivos de auditoría detallando cada paso del proceso
+
+---
+
+## 💡 Créditos
+
+- **RESTCountries API**: [https://restcountries.com](https://restcountries.com)
+- **OpenCage API**: [https://opencagedata.com](https://opencagedata.com)
 ```
-
----
-
-## 🚀 **Ejecución del Proyecto**
-
-### 👉 **0. Ejecución Automatica**
-
-Este script ejecuta en orden toda la rutina del programa:
-
-```bash
-python run.py
-```
-
----
-
-### 👉 **1. Ingestión de Datos**
-
-Este script extrae datos desde la API y los almacena en la base de datos:
-
-```bash
-python src/ingestion.py
-```
-
-* Guarda los datos en `src/static/db/ingestion.db`
-* Genera archivos CSV y Excel en `src/static/csv/` y `src/static/xlsx/`
-* Genera un informe de auditoría en `src/static/auditoria/ingestion_report.txt`
-
----
-
-### 🧹 **2. Limpieza de Datos**
-
-Este script limpia los datos previamente almacenados en la base de datos:
-
-```bash
-python src/cleaning.py
-```
-
-* Limpia duplicados y valores nulos
-* Normaliza columnas numéricas
-* Guarda resultados en formato Excel
-* Genera un informe detallado en `src/static/auditoria/cleaning_report.txt`
-
----
-
-## ⚙️ **Automatización con GitHub Actions**
-
-El proceso de ingestión y limpieza está automatizado mediante GitHub Actions. El flujo de trabajo está definido en:
-
-```
-.github/workflows/bigdata.yml
-```
-
-* La ingestión de datos se ejecuta automáticamente al realizar un **push** a la rama `main` o cada hora mediante una programación `cron`.
-* Si la ingestión es exitosa, se ejecutará automáticamente el proceso de limpieza.
-
----
-
-## ✅ **Resultados**
-
-📊 **Datos de la ingestión:**
-
-* `ingestion.db` – Base de datos SQLite con los datos ingeridos
-* `ingestion.csv` – Datos exportados en formato CSV
-* `ingestion.xlsx` – Datos exportados en formato Excel
-
-🧽 **Resultados de la limpieza:**
-
-* `cleaning.xlsx` – Datos limpios exportados en formato Excel
-* `cleaning_report.txt` – Informe detallado de la limpieza
-
----
-
-## 🚨 **Posibles Errores y Soluciones**
-
-| Error                        | Causa                                              | Solución                                                                                    |
-| ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `Error 404`                | La API no está disponible                         | Verifica la URL y la disponibilidad de la API                                                |
-| `sqlite3.OperationalError` | Problema de permisos o bloqueo de la base de datos | Asegúrate de que no haya otra conexión activa a la base de datos                           |
-| `ImportError`              | Módulo no encontrado                              | Asegúrate de haber instalado todas las dependencias con `pip install -r requirements.txt` |
-
----
-
-## 👨‍💻 **Contribuciones**
-
-¡Las contribuciones son bienvenidas! Si deseas colaborar, sigue estos pasos:
-
-1. Haz un fork del repositorio
-2. Crea una rama (`git checkout -b feature/nueva-funcionalidad`)
-3. Realiza tus cambios y haz un commit (`git commit -m "Descripción de cambios"`)
-4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`)
-5. Abre un **pull request**
-
----
-
-## 🌟 **Autor**
-
-**[Juan Esteban Atehortua Sanchez]**

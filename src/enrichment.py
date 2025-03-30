@@ -1,6 +1,10 @@
 import pandas as pd
 import os
+import requests
+import sqlite3
 import logging
+import time
+from tqdm import tqdm
 
 # Configurar logging
 logging.basicConfig(
@@ -11,53 +15,77 @@ logging.basicConfig(
 # Rutas
 BASE_PATH = "src/static"
 BASE_DATA = os.path.join(BASE_PATH, "xlsx", "cleaning.xlsx")
-ENRICH_PATH = os.path.join(BASE_PATH, "enrichment_sources")
 ENRICHED_OUTPUT = os.path.join(BASE_PATH, "xlsx", "enriched_data.xlsx")
 AUDIT_OUTPUT = os.path.join(BASE_PATH, "auditoria", "enriched_report.txt")
+DB_PATH = os.path.join(BASE_PATH, "db", "ingestion.db")
 
-# Cargar el dataset base
+# Cargar dataset limpio
 df_base = pd.read_excel(BASE_DATA)
 original_count = len(df_base)
 logging.info(f"📥 Dataset base cargado: {original_count} registros.")
 
-# Cargar fuentes adicionales
-sources = {}
+# API de geolocalización
+API_KEY = "ce075825b9574c5d92b38bcaad143366"  # ← Reemplaza esto
 
-try:
-    sources['json'] = pd.read_json(os.path.join(ENRICH_PATH, "data.json"))
-    sources['csv'] = pd.read_csv(os.path.join(ENRICH_PATH, "data.csv"))
-    sources['xlsx'] = pd.read_excel(os.path.join(ENRICH_PATH, "data.xlsx"))
-    sources['xml'] = pd.read_xml(os.path.join(ENRICH_PATH, "data.xml"))
-    sources['html'] = pd.read_html(os.path.join(ENRICH_PATH, "data.html"))[0]
-    sources['txt'] = pd.read_csv(os.path.join(ENRICH_PATH, "data.txt"), sep="\t", encoding="utf-8")
-except Exception as e:
-    logging.error(f"❌ Error al leer fuentes: {e}")
+def geolocalizar_ciudad(ciudad):
+    if not ciudad:
+        return None, None
+    url = 'https://api.opencagedata.com/geocode/v1/json'
+    params = {
+        'q': ciudad,
+        'key': API_KEY,
+        'language': 'es',
+        'limit': 1
+    }
+    try:
+        response = requests.get(url, params=params)
+        data = response.json()
 
-# Integrar datos adicionales
-df_enriched = df_base.copy()
+        if data['results']:
+            coords = data['results'][0]['geometry']
+            return coords['lat'], coords['lng']
+        else:
+            return None, None
+    except Exception as e:
+        logging.warning(f"❌ Error geolocalizando {ciudad}: {e}")
+        return None, None
+
+# Auditoría
 audit_lines = []
 audit_lines.append("📋 **Informe de Enriquecimiento de Datos**\n")
 audit_lines.append(f"🔢 Registros base: {original_count}")
 
-for name, df_extra in sources.items():
-    if 'id' not in df_extra.columns:
-        logging.warning(f"⚠️ La fuente {name} no contiene columna 'id'. Saltando.")
-        audit_lines.append(f"⚠️ Fuente {name}: no contiene columna 'id', no se integró.")
-        continue
+# Enriquecer si hay columna 'capital'
+latitudes = []
+longitudes = []
 
-    initial_cols = df_enriched.columns.tolist()
-    df_enriched = df_enriched.merge(df_extra, on="id", how="left", suffixes=('', f'_{name}'))
-    new_cols = [col for col in df_enriched.columns if col not in initial_cols]
+if 'capital' in df_base.columns:
+    for idx, row in tqdm(df_base.iterrows(), total=len(df_base), desc="Enriqueciendo capitales"):
+        ciudad = row['capital']
+        lat, lng = geolocalizar_ciudad(ciudad)
+        latitudes.append(lat)
+        longitudes.append(lng)
+        time.sleep(1)  # <-- delay de 1 segundo entre llamadas
 
-    coincidencias = df_extra['id'].isin(df_base['id']).sum()
-    audit_lines.append(f"✅ Fuente {name}: {coincidencias} coincidencias. Campos añadidos: {', '.join(new_cols)}")
+    df_base['latitud'] = latitudes
+    df_base['longitud'] = longitudes
+    audit_lines.append("🌍 Enriquecimiento con coordenadas geográficas aplicado.")
+else:
+    logging.warning("⚠️ No se encontró la columna 'capital' para enriquecer con coordenadas.")
+    audit_lines.append("⚠️ Enriquecimiento geográfico no aplicado (columna 'capital' no encontrada).")
 
-# Exportar resultados
-df_enriched.to_excel(ENRICHED_OUTPUT, index=False)
+# Exportar a Excel
+df_base.to_excel(ENRICHED_OUTPUT, index=False)
 logging.info(f"✅ Dataset enriquecido exportado a: {ENRICHED_OUTPUT}")
 
-# Generar archivo de auditoría
-audit_lines.append(f"\n🔢 Registros finales: {len(df_enriched)}")
+# Exportar a SQLite
+conn = sqlite3.connect(DB_PATH)
+df_base.to_sql("countries_enriched", conn, if_exists="replace", index=False)
+conn.close()
+logging.info("🗃️ Datos enriquecidos exportados a la tabla 'countries_enriched' en SQLite.")
+
+# Guardar informe
+audit_lines.append(f"🔢 Registros finales: {len(df_base)}")
 with open(AUDIT_OUTPUT, "w", encoding="utf-8") as f:
     f.write("\n".join(audit_lines))
 logging.info(f"📝 Informe de auditoría generado en: {AUDIT_OUTPUT}")

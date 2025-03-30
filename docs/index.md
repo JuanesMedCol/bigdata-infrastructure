@@ -1,24 +1,24 @@
 # Proyecto Integrador de Infraestructura y Arquitectura para Big Data
 
-Este proyecto está diseñado para realizar la **ingesta** de datos desde una API pública, almacenarlos en una base de datos SQLite y permitir su posterior **limpieza y análisis** mediante scripts automatizados en Python.
+Este proyecto está diseñado para realizar la **ingesta** de datos desde una API pública global, almacenarlos en una base de datos SQLite, permitir su posterior **limpieza**, **enriquecimiento geográfico** y análisis mediante scripts automatizados en Python.
 
 ## 🚀 **Descripción**
 
-Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.typicode.com/posts), que es un servicio de pruebas para desarrolladores. Los datos extraídos se almacenan en una base de datos SQLite local, permitiendo su análisis, limpieza y manipulación posterior.
+Este proyecto obtiene datos de la API [RESTCountries](https://restcountries.com/v3.1/all), que proporciona información sobre todos los países del mundo. Los datos extraídos se almacenan en una base de datos SQLite local, permitiendo su análisis, limpieza, enriquecimiento con coordenadas geográficas y manipulación posterior.
 
 ### 🔥 **Funcionalidades:**
 
-✅ Realiza una solicitud `GET` a la API para obtener datos.
+✅ Realiza una solicitud `GET` para obtener datos de todos los países del mundo.
 
 ✅ Almacena los datos en una base de datos SQLite.
-
-✅ Evita duplicados en la base de datos mediante restricciones únicas.
 
 ✅ Exporta los datos a formatos **CSV** y **Excel** para su análisis.
 
 ✅ Limpia los datos, manejando valores nulos y datos duplicados.
 
-✅ Genera un informe de auditoría detallado con el estado de los datos.
+✅ Enriquecer cada país con su latitud y longitud usando la API de OpenCage.
+
+✅ Genera informes de auditoría detallados con el estado de cada proceso.
 
 ---
 
@@ -26,87 +26,49 @@ Este proyecto obtiene datos de la API [JSONPlaceholder](https://jsonplaceholder.
 
 ```
 [bigdata-infrastructure]
-│   .gitattributes
-│   .gitignore
-│   mkdocs.yml
 │   README.md
 │   requirements.txt
 │   run.py
-│   setup.py
 │
-├───.github
-│   └───workflows
-│           bigdata.yml
-│
-├───.qodo
-│       history.sqlite
-│
-├───bigdata_infrastructure.egg-info
-│       dependency_links.txt
-│       PKG-INFO
-│       requires.txt
-│       SOURCES.txt
-│       top_level.txt
-│
-├───build
-│   └───bdist.win-amd64
 ├───docs
 │       index.md
 │       ingesta.md
 │       limpieza.md
+│       enrichment.md
 │
 └───src
-    │   cleaning.py
     │   ingestion.py
+    │   cleaning.py
+    │   enrichment.py
     │
     └───static
         ├───auditoria
-        │       cleaning_report.txt
         │       ingestion_report.txt
-        │
+        │       cleaning_report.txt
+        │       enriched_report.txt
         ├───csv
         │       ingestion.csv
-        │
         ├───db
         │       ingestion.db
-        │
         └───xlsx
-                cleaning.xlsx
                 ingestion.xlsx
+                cleaning.xlsx
+                enriched_data.xlsx
 ```
 
 ---
 
 ## 🛠️ **Requisitos**
 
-Para ejecutar este proyecto, necesitas tener instalados los siguientes paquetes y herramientas:
+Para ejecutar este proyecto necesitas tener instalado:
 
 * **Python 3.x**
-* **SQLite3** (ya viene incluido con Python)
-* Bibliotecas adicionales de Python que puedes instalar fácilmente usando `pip`
-
----
-
-## 📥 **Instalación de las dependencias**
-
-1. Clona el repositorio desde GitHub:
-
-```bash
-git clone https://github.com/JuanesMedCol/bigdata-infrastructure.git
-```
-
-2. Accede al directorio del proyecto:
-
-```bash
-cd bigdata-infrastructure
-```
-
-3. Instala las dependencias desde el archivo `requirements.txt` o usando el setup:
-
-```bash
-Opcion 1: pip install -r requirements.txt
-Opcion 2: pip install .
-```
+* **SQLite3**
+* Bibliotecas de Python (ver `requirements.txt`) que incluyen:
+  - `pandas`
+  - `requests`
+  - `openpyxl`
+  - `tqdm`
 
 ---
 
@@ -122,35 +84,40 @@ python run.py
 
 ## 📊 Modelo de Base de Datos
 
-### 🧩 Estructura de la tabla `posts`
+### 🧩 Estructura de las tablas
 
-La base de datos `ingestion.db` contiene la tabla `posts` donde se almacenan los datos obtenidos del API.
+#### Tabla `countries`
+
+Contiene la información original obtenida desde la API.
+
+#### Tabla `countries_clean`
+
+Contiene los datos luego de ser limpiados.
+
+#### Tabla `countries_enriched`
+
+Contiene los datos enriquecidos con latitud y longitud.
 
 ```sql
-CREATE TABLE IF NOT EXISTS posts (
-    id INTEGER PRIMARY KEY,
-    title TEXT,
-    body TEXT
+CREATE TABLE IF NOT EXISTS countries (
+    pais TEXT,
+    capital TEXT,
+    region TEXT,
+    subregion TEXT,
+    poblacion INTEGER,
+    area REAL
 )
 ```
 
-| Campo     | Tipo    | Descripción              |
-| --------- | ------- | ------------------------- |
-| `id`    | INTEGER | Identificador único (PK) |
-| `title` | TEXT    | Título del post          |
-| `body`  | TEXT    | Contenido del post        |
-
 ---
 
-## 🧠 Diagrama Mermaid – Modelo de Datos
+## 🧠 Diagrama Mermaid – Flujo General
 
 ``` mermaid
-erDiagram
-    posts {
-        INTEGER id PK
-        TEXT title
-        TEXT body
-    }
+flowchart TD
+    A[Ingesta API RESTCountries] --> B[Guardar en SQLite y Excel]
+    B --> C[Limpieza de Datos]
+    C --> D[Guardar limpio en cleaning.xlsx y countries_clean]
+    D --> E[Enriquecimiento con OpenCage]
+    E --> F[Guardar enriquecido en enriched_data.xlsx y countries_enriched]
 ```
-
----
