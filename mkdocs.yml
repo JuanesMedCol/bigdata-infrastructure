@@ -38,6 +38,7 @@ nav:
   - Limpieza de Datos: cleaning.md
   - Enriquecimiento de Datos: enrichment.md
   - Estructura de la Base de Datos: structure_db.md
+  - Informe de Auditoría: report.md
 
 markdown_extensions:
   - tables
