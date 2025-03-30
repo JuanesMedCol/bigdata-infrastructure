@@ -1,4 +1,6 @@
-🌐 Proyecto de Ingesta, Limpieza y Enriquecimiento de Datos GlobalesEste proyecto implementa una arquitectura de procesamiento de datos basada en Python, orientada al tratamiento de datos globales sobre países del mundo. Los datos son recolectados desde la API pública [RESTCountries](https://restcountries.com/v3.1/all) y enriquecidos con coordenadas geográficas utilizando la API de [OpenCage](https://opencagedata.com/).
+# 🌐 Proyecto de Ingesta, Limpieza y Enriquecimiento de Datos Globales
+# Proyecto Integrador de Big Data
+Este proyecto implementa una arquitectura de procesamiento de datos basada en Python, orientada al tratamiento de datos globales sobre países del mundo. Los datos son recolectados desde la API pública [RESTCountries](https://restcountries.com/v3.1/all) y enriquecidos con coordenadas geográficas utilizando la API de [OpenCage](https://opencagedata.com/).
 
 ---
 
