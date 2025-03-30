@@ -37,6 +37,7 @@ nav:
   - Ingesta de Datos: ingestion.md
   - Limpieza de Datos: cleaning.md
   - Enriquecimiento de Datos: enrichment.md
+  - Estructura de la Base de Datos: structure_db.md
 
 markdown_extensions:
   - tables

@@ -1,11 +1,11 @@
-name: Ingestión, Limpieza y Documentación
+name: Ingestión, Limpieza, Enrequicimiento, Auditoria y Documentación
 
 on:
   push:
     branches:
       - main
   schedule:
-    - cron: '0 * * * *'  # Ejecutar cada hora
+    - cron: '0 * * * *'
 
 jobs:
   ingest_data:
@@ -78,19 +78,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-  
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-  
+
       - name: Install dependencies
         run: |
           pip install pandas openpyxl requests tqdm
-  
+
       - name: Run enrichment script
         run: python src/enrichment.py
-  
+
       - name: Upload enrichment results
         uses: actions/upload-artifact@v4
         with:
@@ -100,8 +100,29 @@ jobs:
             src/static/auditoria/enriched_report.txt
             src/static/xlsx/enriched_data.xlsx
 
-  build_docs:
+  generate_report:
     needs: enrich_data
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run report generation script
+        run: python src/report.py
+
+      - name: report audit markdown
+        uses: actions/upload-artifact@v4
+        with:
+          name: report-md
+          path: docs/report.md
+
+  build_docs:
+    needs: generate_report
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -119,14 +140,14 @@ jobs:
 
       - name: Copiar archivos generados a docs/resultados
         run: |
-            mkdir -p docs/resultados
-            cp src/static/auditoria/*.txt docs/resultados/
-            cp src/static/csv/*.csv docs/resultados/
-            cp src/static/xlsx/*.xlsx docs/resultados/
+          mkdir -p docs/resultados
+          cp src/static/auditoria/*.txt docs/resultados/
+          cp src/static/csv/*.csv docs/resultados/
+          cp src/static/xlsx/*.xlsx docs/resultados/
+          cp docs/report.md docs/resultados/
 
       - name: Mostrar plugins activos
-        run: |
-            mkdocs build --verbose
+        run: mkdocs build --verbose
 
       - name: Build MkDocs site
         run: mkdocs build
@@ -139,4 +160,3 @@ jobs:
 
       - name: Verificar contenido de site/
         run: ls -R site/
-

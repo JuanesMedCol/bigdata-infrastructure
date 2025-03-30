@@ -49,7 +49,8 @@ def main():
     scripts = [
         ("ingestion.py", False),
         ("cleaning.py", False),
-        ("enrichment.py", True)  # Solo aquí se activa la barra
+        ("enrichment.py", True),
+        ('report.py', False)
     ]
 
     for script, usar_barra in scripts:
