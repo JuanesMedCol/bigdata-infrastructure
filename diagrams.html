@@ -276,39 +276,41 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
-    A1[Consulta API RESTCountries] --&gt; A2[Extraer datos]
-    A2 --&gt; A3[Guardar en SQLite: countries]
+    A1[API RESTCountries] --&gt; A2[Extraer datos]
+    A2 --&gt; A3[Guardar en SQLite]
     A3 --&gt; A4[Exportar a Excel y CSV]
-    A4 --&gt; A5[Generar reporte de auditoría]
-    A5 --&gt; B1[Leer countries desde SQLite]
+    A4 --&gt; A5[Generar reporte]
+
+    A5 --&gt; B1[Leer countries]
     B1 --&gt; B2[Eliminar duplicados]
-    B2 --&gt; B3[Imputar nulos (media / ffill)]
-    B3 --&gt; B4[Convertir tipos: población y área]
-    B4 --&gt; B5[Guardar en countries_clean y Excel]
-    B5 --&gt; B6[Generar cleaning_report.txt]
+    B2 --&gt; B3[Imputar nulos]
+    B3 --&gt; B4[Convertir tipos]
+    B4 --&gt; B5[Guardar en cleaning y Excel]
+    B5 --&gt; B6[Generar reporte limpieza]
+
     B6 --&gt; C1[Leer cleaning.xlsx]
-    C1 --&gt; C2[Extraer capitales]
-    C2 --&gt; C3{Capital válida?}
-    C3 -- Sí --&gt; C4[Consultar API OpenCage]
-    C4 --&gt; C5[Añadir latitud y longitud]
-    C5 --&gt; C6[Guardar en countries_enriched y Excel]
-    C6 --&gt; C7[Generar enriched_report.txt]
+    C1 --&gt; C2[Leer capitales]
+    C2 --&gt; C3{Capital valida?}
+    C3 -- Si --&gt; C4[API OpenCage]
+    C4 --&gt; C5[Añadir coords]
+    C5 --&gt; C6[Guardar enriched]
+    C6 --&gt; C7[Reporte enriquecimiento]
     C3 -- No --&gt; CZ[Omitir registro]</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
-    A[Solicitar datos de API RESTCountries] --&gt; B[Extraer atributos clave]
-    B --&gt; C[Guardar en CSV y Excel]
-    C --&gt; D[Insertar en tabla countries (SQLite)]
-    D --&gt; E[Generar ingestion_report.txt]</code></pre>
+    A[Solicitar API RESTCountries] --&gt; B[Extraer campos]
+    B --&gt; C[Guardar CSV y Excel]
+    C --&gt; D[Insertar en SQLite]
+    D --&gt; E[Generar reporte ingesta]</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
-    A[Leer datos de tabla countries] --&gt; B[Eliminar duplicados]
-    B --&gt; C[Imputar valores nulos (media, ffill)]
-    C --&gt; D[Convertir tipos: poblacion y area]
-    D --&gt; E[Guardar en cleaning.xlsx y countries_clean]
-    E --&gt; F[Generar cleaning_report.txt]</code></pre>
+    A[Leer tabla countries] --&gt; B[Eliminar duplicados]
+    B --&gt; C[Imputar nulos]
+    C --&gt; D[Convertir poblacion y area]
+    D --&gt; E[Guardar cleaning.xlsx y tabla]
+    E --&gt; F[Generar reporte limpieza]</code></pre>
 </div>
 <div class="tabbed-block">
 <pre class="mermaid"><code>graph TD
