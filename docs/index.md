@@ -26,8 +26,6 @@ El proyecto integra tres fases principales en un entorno simulado de Big Data en
 
 ## 📂 **Estructura del Proyecto**
 
-[**Repositorio del Proyecto**](https://github.com/JuanesMedCol/bigdata-infrastructure/)
-
 ```
 [bigdata-infrastructure]
 │   README.md
@@ -90,15 +88,15 @@ python run.py
 
 ### 🧩 Estructura de las tablas
 
-#### Tabla `countries`
+Tabla `countries`
 
 Contiene la información original obtenida desde la API.
 
-#### Tabla `countries_clean`
+Tabla `countries_clean`
 
 Contiene los datos luego de ser limpiados.
 
-#### Tabla `countries_enriched`
+Tabla `countries_enriched`
 
 Contiene los datos enriquecidos con latitud y longitud.
 

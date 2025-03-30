@@ -40,13 +40,12 @@ nav:
   - Inicio: index.md
   - Documentación del Proyecto:
       - Introducción: proyect.md
-      - Ingesta de Datos: ingestion.md
-      - Limpieza de Datos: cleaning.md
-      - Enriquecimiento de Datos: enrichment.md
+      - Ingesta: ingestion.md
+      - Limpieza: cleaning.md
+      - Enriquecimiento: enrichment.md
       - Base de Datos: structure_db.md
-  - Estructura del Proyecto:
       - Diagramas: diagrams.md
-      - Informe de Auditoría: report.md
+      - Auditoría: report.md
 
 markdown_extensions:
   - tables
@@ -59,9 +58,7 @@ markdown_extensions:
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
-      slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
+      alternate_style: true
   - pymdownx.emoji
   - pymdownx.details
   - pymdownx.tasklist
