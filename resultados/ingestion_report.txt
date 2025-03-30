@@ -1,5 +1,4 @@
-Comparación de los datos extraídos y almacenados en la base de datos:
+📋 Informe de Ingesta Global de Países
 
-Resumen:
-✔️ Registros coincidentes: 100
-❌ Registros no encontrados: 0
+🌍 Total países: 250
+📝 Columnas: pais, capital, region, subregion, poblacion, area

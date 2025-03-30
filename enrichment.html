@@ -5,11 +5,11 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<link href="https://juanesmedcol.github.io/bigdata-infrastructure/limpieza.html" rel="canonical"/>
-<link href="ingesta.html" rel="prev"/>
+<link href="https://juanesmedcol.github.io/bigdata-infrastructure/enrichment.html" rel="canonical"/>
+<link href="cleaning.html" rel="prev"/>
 <link href="assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.9" name="generator"/>
-<title>Limpieza de Datos - Documentación del Proyecto Big Data</title>
+<title>Enriquecimiento de Datos - Documentación del Proyecto Big Data</title>
 <link href="assets/stylesheets/main.4af4bdda.min.css" rel="stylesheet"/>
 <link href="assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -31,7 +31,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#limpieza-y-transformacion-de-datos">
+<a class="md-skip" href="#enriquecimiento-de-datos-geograficos">
           Skip to content
         </a>
 </div>
@@ -55,7 +55,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Limpieza de Datos
+              Enriquecimiento de Datos
             
           </span>
 </div>
@@ -119,7 +119,7 @@
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="ingesta.html">
+<a class="md-tabs__link" href="ingestion.html">
         
   
     
@@ -128,13 +128,23 @@
 
       </a>
 </li>
-<li class="md-tabs__item md-tabs__item--active">
-<a class="md-tabs__link" href="limpieza.html">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="cleaning.html">
         
   
     
   
   Limpieza de Datos
+
+      </a>
+</li>
+<li class="md-tabs__item md-tabs__item--active">
+<a class="md-tabs__link" href="enrichment.html">
+        
+  
+    
+  
+  Enriquecimiento de Datos
 
       </a>
 </li>
@@ -163,9 +173,17 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="ingesta.html">
+<a class="md-nav__link" href="ingestion.html">
 <span class="md-ellipsis">
     Ingesta de Datos
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="cleaning.html">
+<span class="md-ellipsis">
+    Limpieza de Datos
     
   </span>
 </a>
@@ -174,14 +192,14 @@
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
 <span class="md-ellipsis">
-    Limpieza de Datos
+    Enriquecimiento de Datos
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<a class="md-nav__link md-nav__link--active" href="limpieza.html">
+<a class="md-nav__link md-nav__link--active" href="enrichment.html">
 <span class="md-ellipsis">
-    Limpieza de Datos
+    Enriquecimiento de Datos
     
   </span>
 </a>
@@ -192,12 +210,12 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#limpieza-y-transformacion-de-datos">
+<a class="md-nav__link" href="#enriquecimiento-de-datos-geograficos">
 <span class="md-ellipsis">
-      🧼 Limpieza y Transformación de Datos
+      🌍 Enriquecimiento de Datos Geográficos
     </span>
 </a>
-<nav aria-label="🧼 Limpieza y Transformación de Datos" class="md-nav">
+<nav aria-label="🌍 Enriquecimiento de Datos Geográficos" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#estructura-de-archivos">
@@ -207,30 +225,16 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#1-carga-de-datos">
+<a class="md-nav__link" href="#que-hace-el-script">
 <span class="md-ellipsis">
-      🔹 1. Carga de Datos
+      🧠 ¿Qué hace el script?
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#2-analisis-exploratorio">
+<a class="md-nav__link" href="#uso-de-la-api-de-opencage">
 <span class="md-ellipsis">
-      🔍 2. Análisis Exploratorio
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#3-proceso-de-limpieza">
-<span class="md-ellipsis">
-      🧼 3. Proceso de Limpieza
-    </span>
-</a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#4-guardado-de-resultados">
-<span class="md-ellipsis">
-      💾 4. Guardado de Resultados
+      ⚙️ Uso de la API de OpenCage
     </span>
 </a>
 </li>
@@ -256,9 +260,9 @@
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#diagrama-del-flujo-de-limpieza">
+<a class="md-nav__link" href="#diagrama-del-proceso-de-enriquecimiento">
 <span class="md-ellipsis">
-      🧠 Diagrama del Flujo de Limpieza
+      🧠 Diagrama del Proceso de Enriquecimiento
     </span>
 </a>
 </li>
@@ -275,117 +279,71 @@
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<h1>Limpieza de Datos</h1>
-<h2 id="limpieza-y-transformacion-de-datos">🧼 Limpieza y Transformación de Datos<a class="headerlink" href="#limpieza-y-transformacion-de-datos" title="Permanent link">¶</a></h2>
-<p>Este script realiza una limpieza automática de datos almacenados en una base de datos SQLite. A continuación, se detalla cada una de las etapas del proceso.</p>
+<h1>Enriquecimiento de Datos</h1>
+<h2 id="enriquecimiento-de-datos-geograficos">🌍 Enriquecimiento de Datos Geográficos<a class="headerlink" href="#enriquecimiento-de-datos-geograficos" title="Permanent link">¶</a></h2>
+<p>Este script toma un archivo de datos previamente limpiado y lo <strong>enriquece geográficamente</strong> utilizando la API de OpenCage para obtener coordenadas (latitud y longitud) de la capital de cada país.</p>
 <hr/>
 <h3 id="estructura-de-archivos">📁 Estructura de Archivos<a class="headerlink" href="#estructura-de-archivos" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>Base de datos de entrada</strong> : <code>src/static/db/ingestion.db</code></li>
-<li><strong>Archivo Excel de salida</strong> : <code>src/static/xlsx/cleaning.xlsx</code></li>
-<li><strong>Reporte de auditoría</strong> : <code>src/static/auditoria/cleaning_report.txt</code></li>
+<li><strong>Archivo de entrada (limpio)</strong> : <code>src/static/xlsx/cleaning.xlsx</code></li>
+<li><strong>Archivo enriquecido de salida</strong> : <code>src/static/xlsx/enriched_data.xlsx</code></li>
+<li><strong>Base de datos de salida</strong> : <code>src/static/db/ingestion.db</code></li>
+<li><strong>Reporte de auditoría</strong> : <code>src/static/auditoria/enriched_report.txt</code></li>
 </ul>
 <hr/>
-<h3 id="1-carga-de-datos">🔹 1. Carga de Datos<a class="headerlink" href="#1-carga-de-datos" title="Permanent link">¶</a></h3>
-<p>Se conecta a la base de datos SQLite y se lee la tabla <code>posts</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_data</span><span class="p">():</span>
-    <span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DB_PATH</span><span class="p">)</span>
-    <span class="n">query</span> <span class="o">=</span> <span class="s2">"SELECT * FROM posts"</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">conn</span><span class="p">)</span>
-</code></pre></div>
+<h3 id="que-hace-el-script">🧠 ¿Qué hace el script?<a class="headerlink" href="#que-hace-el-script" title="Permanent link">¶</a></h3>
+<p>✅ Lee los datos del archivo <code>cleaning.xlsx</code>.</p>
+<p>✅ Consulta la API de OpenCage por cada capital del dataset (respetando un límite de 1 solicitud por segundo).</p>
+<p>✅ Agrega dos nuevas columnas:
+* <code>latitud</code>
+* <code>longitud</code></p>
+<p>✅ Exporta el resultado enriquecido a:
+* Excel (<code>enriched_data.xlsx</code>)
+* Base de datos SQLite (<code>countries_enriched</code>)
+* Informe de auditoría (<code>enriched_report.txt</code>)</p>
 <hr/>
-<h3 id="2-analisis-exploratorio">🔍 2. Análisis Exploratorio<a class="headerlink" href="#2-analisis-exploratorio" title="Permanent link">¶</a></h3>
-<p>Se genera un pequeño resumen con:</p>
-<ul>
-<li>Número total de registros</li>
-<li>Cantidad de valores nulos por columna</li>
-<li>Registros duplicados</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explore_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<h3 id="uso-de-la-api-de-opencage">⚙️ Uso de la API de OpenCage<a class="headerlink" href="#uso-de-la-api-de-opencage" title="Permanent link">¶</a></h3>
+<p>Este script realiza una llamada <code>GET</code> por cada capital del mundo a:</p>
+<div class="highlight"><pre><span></span><code>https://api.opencagedata.com/geocode/v1/json
 </code></pre></div>
-<hr/>
-<h3 id="3-proceso-de-limpieza">🧼 3. Proceso de Limpieza<a class="headerlink" href="#3-proceso-de-limpieza" title="Permanent link">¶</a></h3>
-<p>La limpieza incluye:</p>
-<ul>
-<li>✅ Eliminación de duplicados</li>
-<li>✅ Relleno de valores nulos:</li>
-<li>Numéricos → con la media</li>
-<li>Texto → con el valor anterior (<code>ffill</code>)</li>
-<li>✅ Conversión de tipos:</li>
-<li><code>fecha</code> → datetime</li>
-<li><code>monto</code> → numérico</li>
-<li>Normalización de <code>monto</code> (media 0, desviación estándar 1)</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># para columnas numéricas</span>
-<span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>                 <span class="c1"># para texto</span>
-</code></pre></div>
-<hr/>
-<h3 id="4-guardado-de-resultados">💾 4. Guardado de Resultados<a class="headerlink" href="#4-guardado-de-resultados" title="Permanent link">¶</a></h3>
-<p>Se exportan los datos a:</p>
-<ul>
-<li>Archivo <strong>Excel</strong> (<code>.xlsx</code>)</li>
-<li>Un <strong>reporte de limpieza</strong> en <code>.txt</code>, que incluye resumen del análisis y total de registros finales</li>
-</ul>
-<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="n">OUTPUT_CSV</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">AUDIT_FILE</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-</code></pre></div>
+<p>La solicitud se realiza con un retraso (<code>delay</code>) de <strong>1 segundo</strong> para cumplir con la cuota gratuita de la API.</p>
 <hr/>
 <h3 id="reporte-generado">📊 Reporte generado<a class="headerlink" href="#reporte-generado" title="Permanent link">¶</a></h3>
-<p><strong>Ejemplo de contenido del <code>cleaning_report.txt</code>:</strong></p>
-<div class="highlight"><pre><span></span><code>📋 Informe de Limpieza de Datos
+<p><strong>Ejemplo de contenido del <code>enriched_report.txt</code>:</strong></p>
+<div class="highlight"><pre><span></span><code>📋 Informe de Enriquecimiento de Datos
 
-Número total de registros: 100
-Número de valores nulos por columna:
-id       0
-title    0
-body     0
-...
-Número de registros duplicados: 2
-
-✅ Número de registros después de limpieza: 98
+🔢 Registros base: 250
+🌍 Enriquecimiento con coordenadas geográficas aplicado.
+🔢 Registros finales: 250
 </code></pre></div>
 <hr/>
 <h3 id="resultado-final">✅ Resultado Final<a class="headerlink" href="#resultado-final" title="Permanent link">¶</a></h3>
-<p>El script completa el proceso con logs informativos:</p>
-<div class="highlight"><pre><span></span><code>🚀 Inicio del proceso de limpieza de datos
-📥 Datos cargados correctamente...
-✅ Proceso completado con éxito.
+<p>El script genera logs informativos a medida que procesa los datos:</p>
+<div class="highlight"><pre><span></span><code>🌍 Enriqueciendo capitales: 30% completado...
+✅ Dataset enriquecido exportado a: enriched_data.xlsx
+🗃️ Datos exportados a la tabla 'countries_enriched'
 </code></pre></div>
 <hr/>
 <h3 id="archivos-generados">📎 Archivos Generados<a class="headerlink" href="#archivos-generados" title="Permanent link">¶</a></h3>
 <ul>
-<li><a href="resultados/cleaning.xlsx">Excel de Limpieza</a></li>
-<li><a href="resultados/cleaning_report.txt">Reporte de Auditoria</a></li>
+<li><a href="resultados/enriched_data.xlsx">Excel Enriquecido</a></li>
+<li><a href="resultados/ingestion.db">Base de Datos SQLite</a></li>
+<li><a href="resultados/enriched_report.txt">Reporte de Auditoría</a></li>
 </ul>
 <hr/>
-<h3 id="diagrama-del-flujo-de-limpieza">🧠 Diagrama del Flujo de Limpieza<a class="headerlink" href="#diagrama-del-flujo-de-limpieza" title="Permanent link">¶</a></h3>
+<h3 id="diagrama-del-proceso-de-enriquecimiento">🧠 Diagrama del Proceso de Enriquecimiento<a class="headerlink" href="#diagrama-del-proceso-de-enriquecimiento" title="Permanent link">¶</a></h3>
 <pre class="mermaid"><code>flowchart TD
-    A[Inicio del Proceso] --&gt; B[Cargar base de datos: ingestion.db]
-    B --&gt; C[Leer tabla posts con Pandas]
-    C --&gt; D[Analisis exploratorio]
-    D --&gt; D1[Contar registros]
-    D --&gt; D2[Buscar nulos]
-    D --&gt; D3[Buscar duplicados]
-
-    D3 --&gt; E[Proceso de limpieza]
-    E --&gt; E1[Eliminar duplicados]
-    E --&gt; E2[Rellenar nulos]
-    E2 --&gt; E2a[Numericos - media]
-    E2 --&gt; E2b[Texto - metodo ffill]
-    E --&gt; E3[Conversion de tipos]
-    E3 --&gt; E3a[fecha a datetime]
-    E3 --&gt; E3b[monto normalizado]
-
-    E3b --&gt; F[Verificar limpieza]
-    F --&gt; G[Exportar Excel: cleaning.xlsx]
-    F --&gt; H[Generar reporte: cleaning_report.txt]
-
-    G --&gt; I[Fin del proceso]
-    H --&gt; I</code></pre>
+    A[Inicio del Proceso] --&gt; B[Cargar archivo cleaning.xlsx]
+    B --&gt; C[Leer columna capital]
+    C --&gt; D{¿Capital existe?}
+    D -- Sí --&gt; E[Consultar API OpenCage por cada capital]
+    E --&gt; F[Añadir latitud y longitud]
+    F --&gt; G[Agregar columnas al DataFrame]
+    G --&gt; H[Exportar a enriched_data.xlsx]
+    G --&gt; I[Guardar en tabla countries_enriched de SQLite]
+    G --&gt; J[Generar enriched_report.txt]
+    J --&gt; K[Fin del proceso]
+    D -- No --&gt; Z[Abortar enriquecimiento]</code></pre>
 </article>
 </div>
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
