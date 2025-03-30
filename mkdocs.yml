@@ -38,12 +38,15 @@ theme:
 
 nav:
   - Inicio: index.md
-  - Ingesta de Datos: ingestion.md
-  - Limpieza de Datos: cleaning.md
-  - Enriquecimiento de Datos: enrichment.md
-  - Estructura de la Base de Datos: structure_db.md
-    - Diagramas: diagrams.md
-  - Informe de Auditoría: report.md
+  - Documentación del Proyecto:
+      - Introducción: proyect.md
+      - Ingesta de Datos: ingestion.md
+      - Limpieza de Datos: cleaning.md
+      - Enriquecimiento de Datos: enrichment.md
+      - Base de Datos: structure_db.md
+  - Estructura del Proyecto:
+      - Diagramas: diagrams.md
+      - Informe de Auditoría: report.md
 
 markdown_extensions:
   - tables
