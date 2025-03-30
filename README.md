@@ -93,7 +93,7 @@ cd bigdata-infrastructure
 ```bash
 Opcion 1: pip install -r requirements.txt
 Opcion 2: pip install .
-
+```
 
 ---
 
@@ -109,4 +109,3 @@ Opcion 2: pip install .
 
 - **RESTCountries API**: [https://restcountries.com](https://restcountries.com)
 - **OpenCage API**: [https://opencagedata.com](https://opencagedata.com)
-```

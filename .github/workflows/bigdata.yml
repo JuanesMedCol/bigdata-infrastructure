@@ -85,7 +85,7 @@ jobs:
   
       - name: Install dependencies
         run: |
-          pip install pandas openpyxl lxml html5lib
+          pip install pandas openpyxl lxml html5lib requests time tqdm logging sqlite3
   
       - name: Run enrichment script
         run: python src/enrichment.py
@@ -99,7 +99,7 @@ jobs:
             src/static/xlsx/enriched_data.xlsx
 
   build_docs:
-    needs: clean_data
+    needs: enrich_data
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
