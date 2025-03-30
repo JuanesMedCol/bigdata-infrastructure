@@ -18,30 +18,31 @@
 4. **Flujo Secuencial**:
    - Cada fase depende de la anterior.
    - Los reportes permiten trazabilidad del estado de los datos.
-
 ---
 
 === "General"
 
     ```mermaid
     graph TD
-        A1[Consulta API RESTCountries] --> A2[Extraer datos]
-        A2 --> A3[Guardar en SQLite: countries]
+        A1[API RESTCountries] --> A2[Extraer datos]
+        A2 --> A3[Guardar en SQLite]
         A3 --> A4[Exportar a Excel y CSV]
-        A4 --> A5[Generar reporte de auditoría]
-        A5 --> B1[Leer countries desde SQLite]
+        A4 --> A5[Generar reporte]
+
+        A5 --> B1[Leer countries]
         B1 --> B2[Eliminar duplicados]
-        B2 --> B3[Imputar nulos (media / ffill)]
-        B3 --> B4[Convertir tipos: población y área]
-        B4 --> B5[Guardar en countries_clean y Excel]
-        B5 --> B6[Generar cleaning_report.txt]
+        B2 --> B3[Imputar nulos]
+        B3 --> B4[Convertir tipos]
+        B4 --> B5[Guardar en cleaning y Excel]
+        B5 --> B6[Generar reporte limpieza]
+
         B6 --> C1[Leer cleaning.xlsx]
-        C1 --> C2[Extraer capitales]
-        C2 --> C3{Capital válida?}
-        C3 -- Sí --> C4[Consultar API OpenCage]
-        C4 --> C5[Añadir latitud y longitud]
-        C5 --> C6[Guardar en countries_enriched y Excel]
-        C6 --> C7[Generar enriched_report.txt]
+        C1 --> C2[Leer capitales]
+        C2 --> C3{Capital valida?}
+        C3 -- Si --> C4[API OpenCage]
+        C4 --> C5[Añadir coords]
+        C5 --> C6[Guardar enriched]
+        C6 --> C7[Reporte enriquecimiento]
         C3 -- No --> CZ[Omitir registro]
     ```
 
@@ -49,21 +50,21 @@
 
     ```mermaid
     graph TD
-        A[Solicitar datos de API RESTCountries] --> B[Extraer atributos clave]
-        B --> C[Guardar en CSV y Excel]
-        C --> D[Insertar en tabla countries (SQLite)]
-        D --> E[Generar ingestion_report.txt]
+        A[Solicitar API RESTCountries] --> B[Extraer campos]
+        B --> C[Guardar CSV y Excel]
+        C --> D[Insertar en SQLite]
+        D --> E[Generar reporte ingesta]
     ```
 
 === "Limpieza"
 
     ```mermaid
     graph TD
-        A[Leer datos de tabla countries] --> B[Eliminar duplicados]
-        B --> C[Imputar valores nulos (media, ffill)]
-        C --> D[Convertir tipos: poblacion y area]
-        D --> E[Guardar en cleaning.xlsx y countries_clean]
-        E --> F[Generar cleaning_report.txt]
+        A[Leer tabla countries] --> B[Eliminar duplicados]
+        B --> C[Imputar nulos]
+        C --> D[Convertir poblacion y area]
+        D --> E[Guardar cleaning.xlsx y tabla]
+        E --> F[Generar reporte limpieza]
     ```
 
 === "Enriquecimiento"
